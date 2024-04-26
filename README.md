@@ -1,1 +1,6 @@
 # 29_teste_diel
+
+CRIANDO OS DOIS PROJETOS
+
+BACK -    NODE
+FRONT -   REACT

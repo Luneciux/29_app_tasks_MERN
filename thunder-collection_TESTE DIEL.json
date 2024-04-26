@@ -1,0 +1,200 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "TESTE DIEL",
+    "dateExported": "2024-04-26T22:20:46.957Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "14c9f341-6415-4e20-8a19-5f2644f57c83",
+            "name": "Users",
+            "containerId": "",
+            "created": "2024-04-26T17:20:40.716Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "079c918a-f979-45b6-8950-d25696943318",
+            "name": "Tags",
+            "containerId": "",
+            "created": "2024-04-26T17:56:16.202Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "f6a5aa79-958e-4475-b1a8-b3bd084cace0",
+            "name": "Tasks",
+            "containerId": "",
+            "created": "2024-04-26T19:44:23.001Z",
+            "sortNum": 30000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "13b4f004-5c23-4ff5-a8da-35141833092d",
+            "colId": "dba8e36f-ec65-4cb7-8ee4-3f0f5bdf2cab",
+            "containerId": "14c9f341-6415-4e20-8a19-5f2644f57c83",
+            "name": "getUsers",
+            "url": "http://localhost:3001/users/",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-04-26T17:20:23.562Z",
+            "modified": "2024-04-26T17:20:28.698Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "33f4caa9-e3a6-4637-93d0-a6c1a61c62f5",
+            "colId": "dba8e36f-ec65-4cb7-8ee4-3f0f5bdf2cab",
+            "containerId": "079c918a-f979-45b6-8950-d25696943318",
+            "name": "getTags",
+            "url": "http://localhost:3001/tags/",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-04-26T17:56:16.202Z",
+            "modified": "2024-04-26T19:41:49.778Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "acffb9f7-bc42-4ea6-8327-81c5390930d2",
+            "colId": "dba8e36f-ec65-4cb7-8ee4-3f0f5bdf2cab",
+            "containerId": "f6a5aa79-958e-4475-b1a8-b3bd084cace0",
+            "name": "getTasks",
+            "url": "http://localhost:3001/tasks/",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-04-26T19:44:23.001Z",
+            "modified": "2024-04-26T19:44:44.579Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "1f91eebb-1540-46a1-9acb-8c2d4d5edb7d",
+            "colId": "dba8e36f-ec65-4cb7-8ee4-3f0f5bdf2cab",
+            "containerId": "14c9f341-6415-4e20-8a19-5f2644f57c83",
+            "name": "getUserById",
+            "url": "http://localhost:3001/users/662c237d921ea4cea8f79507",
+            "method": "GET",
+            "sortNum": 15000,
+            "created": "2024-04-26T21:53:36.603Z",
+            "modified": "2024-04-26T21:58:38.782Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "7a956f42-b577-4d5c-b522-1375e08a60de",
+            "colId": "dba8e36f-ec65-4cb7-8ee4-3f0f5bdf2cab",
+            "containerId": "079c918a-f979-45b6-8950-d25696943318",
+            "name": "getTagById",
+            "url": "http://localhost:3001/tags/662c22a61f337fd00b9fe175",
+            "method": "GET",
+            "sortNum": 15000,
+            "created": "2024-04-26T21:54:22.931Z",
+            "modified": "2024-04-26T21:56:01.445Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "7b0b9f88-8619-4152-bba8-341b3d0849c0",
+            "colId": "dba8e36f-ec65-4cb7-8ee4-3f0f5bdf2cab",
+            "containerId": "f6a5aa79-958e-4475-b1a8-b3bd084cace0",
+            "name": "getTaskById",
+            "url": "http://localhost:3001/tasks/662c0aabebe35e5a241b54fc",
+            "method": "GET",
+            "sortNum": 15000,
+            "created": "2024-04-26T22:03:24.952Z",
+            "modified": "2024-04-26T22:03:52.719Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "633bb3eb-0040-461f-9890-e085117f86a1",
+            "colId": "dba8e36f-ec65-4cb7-8ee4-3f0f5bdf2cab",
+            "containerId": "14c9f341-6415-4e20-8a19-5f2644f57c83",
+            "name": "getTasksByUser",
+            "url": "http://localhost:3001/users/662be47f524854d19dsdsd2367fb2/tags",
+            "method": "GET",
+            "sortNum": 17500,
+            "created": "2024-04-26T22:04:33.561Z",
+            "modified": "2024-04-26T22:06:54.900Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "af7ae021-7bc9-4fab-922a-4c344f69e1f0",
+            "colId": "dba8e36f-ec65-4cb7-8ee4-3f0f5bdf2cab",
+            "containerId": "14c9f341-6415-4e20-8a19-5f2644f57c83",
+            "name": "getTagsByUser",
+            "url": "http://localhost:3001/users/662c237d921ea4cea8f79507/tasks",
+            "method": "GET",
+            "sortNum": 18750,
+            "created": "2024-04-26T22:06:31.727Z",
+            "modified": "2024-04-26T22:07:05.761Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "81fb79b1-c70b-4009-9165-6bea1f698299",
+            "colId": "dba8e36f-ec65-4cb7-8ee4-3f0f5bdf2cab",
+            "containerId": "14c9f341-6415-4e20-8a19-5f2644f57c83",
+            "name": "createUser",
+            "url": "http://localhost:3001/users/",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-04-26T17:20:54.966Z",
+            "modified": "2024-04-26T21:58:21.500Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"teste_1\",\n  \"img\": \"url\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "557b2e3b-8e16-478d-bf82-9afb1a2da276",
+            "colId": "dba8e36f-ec65-4cb7-8ee4-3f0f5bdf2cab",
+            "containerId": "079c918a-f979-45b6-8950-d25696943318",
+            "name": "createTag",
+            "url": "http://localhost:3001/tags/",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-04-26T17:56:16.203Z",
+            "modified": "2024-04-26T21:54:46.078Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"teste_1\",\n  \"userId\": \"662be47f524854d192367fb2\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "cf475ee1-9e27-4a2e-a9ed-6cb434191042",
+            "colId": "dba8e36f-ec65-4cb7-8ee4-3f0f5bdf2cab",
+            "containerId": "f6a5aa79-958e-4475-b1a8-b3bd084cace0",
+            "name": "createTask",
+            "url": "http://localhost:3001/tasks/",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-04-26T19:44:23.002Z",
+            "modified": "2024-04-26T20:45:15.022Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"teste_4\",\n  \"description\": \"teste\",\n  \"date\": \"2024-04-26T20:09:16.330Z\",\n  \"timeSpanHours\": \"1\",\n  \"tags\": [],\n  \"userId\": \"662be47f524854d192367fb2\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
