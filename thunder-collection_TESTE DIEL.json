@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "TESTE DIEL",
-    "dateExported": "2024-04-26T22:20:46.957Z",
+    "dateExported": "2024-04-28T17:13:03.809Z",
     "version": "1.1",
     "folders": [
         {
@@ -116,11 +116,11 @@
             "colId": "dba8e36f-ec65-4cb7-8ee4-3f0f5bdf2cab",
             "containerId": "14c9f341-6415-4e20-8a19-5f2644f57c83",
             "name": "getTasksByUser",
-            "url": "http://localhost:3001/users/662be47f524854d19dsdsd2367fb2/tags",
+            "url": "http://localhost:3001/users/662be47f524854d192367fb2/tasks",
             "method": "GET",
             "sortNum": 17500,
             "created": "2024-04-26T22:04:33.561Z",
-            "modified": "2024-04-26T22:06:54.900Z",
+            "modified": "2024-04-26T22:32:12.055Z",
             "headers": [],
             "params": [],
             "tests": []
@@ -130,11 +130,11 @@
             "colId": "dba8e36f-ec65-4cb7-8ee4-3f0f5bdf2cab",
             "containerId": "14c9f341-6415-4e20-8a19-5f2644f57c83",
             "name": "getTagsByUser",
-            "url": "http://localhost:3001/users/662c237d921ea4cea8f79507/tasks",
+            "url": "http://localhost:3001/users/662c237d921ea4cea8f79507/tags",
             "method": "GET",
             "sortNum": 18750,
             "created": "2024-04-26T22:06:31.727Z",
-            "modified": "2024-04-26T22:07:05.761Z",
+            "modified": "2024-04-28T15:09:49.435Z",
             "headers": [],
             "params": [],
             "tests": []
@@ -148,12 +148,12 @@
             "method": "POST",
             "sortNum": 20000,
             "created": "2024-04-26T17:20:54.966Z",
-            "modified": "2024-04-26T21:58:21.500Z",
+            "modified": "2024-04-28T15:48:51.057Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"name\": \"teste_1\",\n  \"img\": \"url\"\n}",
+                "raw": "{\n  \"name\": \"teste_delete\",\n  \"img\": \"url\"\n}",
                 "form": []
             },
             "tests": []
@@ -167,12 +167,12 @@
             "method": "POST",
             "sortNum": 20000,
             "created": "2024-04-26T17:56:16.203Z",
-            "modified": "2024-04-26T21:54:46.078Z",
+            "modified": "2024-04-28T15:49:10.033Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"title\": \"teste_1\",\n  \"userId\": \"662be47f524854d192367fb2\"\n}",
+                "raw": "{\n  \"title\": \"teste_5\",\n  \"userId\": \"662e6fe3521b74169e2e2ff5\"\n}",
                 "form": []
             },
             "tests": []
@@ -194,6 +194,105 @@
                 "raw": "{\n  \"title\": \"teste_4\",\n  \"description\": \"teste\",\n  \"date\": \"2024-04-26T20:09:16.330Z\",\n  \"timeSpanHours\": \"1\",\n  \"tags\": [],\n  \"userId\": \"662be47f524854d192367fb2\"\n}",
                 "form": []
             },
+            "tests": []
+        },
+        {
+            "_id": "4036ec44-bc27-4dc3-b070-1db8382dcaac",
+            "colId": "dba8e36f-ec65-4cb7-8ee4-3f0f5bdf2cab",
+            "containerId": "14c9f341-6415-4e20-8a19-5f2644f57c83",
+            "name": "changeUser",
+            "url": "http://localhost:3001/users/662be47f524854d192367fb2",
+            "method": "PATCH",
+            "sortNum": 30000,
+            "created": "2024-04-28T14:16:43.759Z",
+            "modified": "2024-04-28T14:35:46.892Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"mudou\",\n  \"img\": \"url\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "444d38cd-95bf-4ea7-b680-dc825eb58326",
+            "colId": "dba8e36f-ec65-4cb7-8ee4-3f0f5bdf2cab",
+            "containerId": "079c918a-f979-45b6-8950-d25696943318",
+            "name": "changeTag",
+            "url": "http://localhost:3001/tags/662c0410903bcafa97727785",
+            "method": "PATCH",
+            "sortNum": 30000,
+            "created": "2024-04-28T15:04:15.549Z",
+            "modified": "2024-04-28T15:09:21.245Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"userId\": \"662c237d921ea4cea8f79507\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "d3e1ec50-a0ec-4617-af54-35b46d22c1ff",
+            "colId": "dba8e36f-ec65-4cb7-8ee4-3f0f5bdf2cab",
+            "containerId": "f6a5aa79-958e-4475-b1a8-b3bd084cace0",
+            "name": "changeTask",
+            "url": "http://localhost:3001/tasks/662c0aabebe35e5a241b54fc",
+            "method": "PATCH",
+            "sortNum": 30000,
+            "created": "2024-04-28T15:09:57.028Z",
+            "modified": "2024-04-28T15:23:32.470Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"tags\": [\n      {\n        \"tagId\": \"662e6980ccca8eef07f65db8\"\n      }\n  ]\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "5c32f831-9672-4faa-9870-bd78ed0afb6c",
+            "colId": "dba8e36f-ec65-4cb7-8ee4-3f0f5bdf2cab",
+            "containerId": "14c9f341-6415-4e20-8a19-5f2644f57c83",
+            "name": "deleteUser",
+            "url": "http://localhost:3001/users/662be47f524854d192367fb2",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2024-04-28T15:29:33.063Z",
+            "modified": "2024-04-28T16:12:50.668Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "742567b0-cff4-4c51-8034-bb2e3b75c083",
+            "colId": "dba8e36f-ec65-4cb7-8ee4-3f0f5bdf2cab",
+            "containerId": "079c918a-f979-45b6-8950-d25696943318",
+            "name": "deleteTag",
+            "url": "http://localhost:3001/tags/662c0410903bcafa97727785",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2024-04-28T16:33:44.904Z",
+            "modified": "2024-04-28T16:34:44.732Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "8c2991d4-c3ad-4d1f-a997-3b8a9f5039df",
+            "colId": "dba8e36f-ec65-4cb7-8ee4-3f0f5bdf2cab",
+            "containerId": "f6a5aa79-958e-4475-b1a8-b3bd084cace0",
+            "name": "deleteTasks",
+            "url": "http://localhost:3001/tasks/662e7ab1b93121476c9565c2",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2024-04-28T16:34:27.111Z",
+            "modified": "2024-04-28T16:35:09.715Z",
+            "headers": [],
+            "params": [],
             "tests": []
         }
     ]
