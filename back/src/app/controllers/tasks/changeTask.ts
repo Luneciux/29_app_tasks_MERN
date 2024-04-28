@@ -2,13 +2,13 @@ import { Request, Response } from "express";
 
 import { Task } from "../../models/Task";
 
-export async function getTaskById(req: Request, res: Response) {
+export async function changeTask(req: Request, res: Response) {
   try {
 
     const { taskId } = req.params;
-
-    const tasks = await Task.find().where("_id").equals( taskId ).populate("tags.tagId");
-    res.status(200).json(tasks);
+    const update = { ...req.body };
+    await Task.findByIdAndUpdate( taskId,  update );
+    res.status(204);
 
 
   } catch (e) {

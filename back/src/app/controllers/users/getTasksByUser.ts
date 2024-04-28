@@ -7,7 +7,8 @@ export async function getTasksByUser(req: Request, res: Response) {
 
     const { userId } = req.params;
 
-    const tasks = await Task.find().where("userId").equals( userId );
+    //populando as tags para poder usar quando for mostrar no front
+    const tasks = await Task.find().where("userId").equals( userId ).populate("tags.tagId");
     res.status(200).json(tasks);
 
 
