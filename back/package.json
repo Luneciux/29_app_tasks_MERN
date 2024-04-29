@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon src/index.ts",
+    "start": "node dist"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.0.2",
