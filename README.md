@@ -27,3 +27,8 @@
 - Estou fazendo assim enquanto não implemento a parte de autenticação, pois vai ser feito caso sobre tempo
 
 ### Front → React
+
+→ Setup do projeto
+
+- Além de ter o node instalado, basta que você clone o projeto e rode, nesse caso com yarn, um yarn (para baixar as dependencias) e um yarn dev
+- Lembre de subir o back juntamente
