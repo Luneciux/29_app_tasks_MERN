@@ -73,4 +73,5 @@ export const GlobalStyles = createGlobalStyle`
 
 //FONTES
 //#333333
+//#e4e4e4
 

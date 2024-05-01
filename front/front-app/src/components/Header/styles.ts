@@ -1,14 +1,15 @@
 import styled from "styled-components";
 
-export const HeaderContainer = styled.header`
+export const HeaderContainerStyle = styled.header`
   background: #AEEBB6;
   display: flex;
   justify-content: center;
   height: 198px;
   align-items: center;
+  padding: 16px;
 `;
 
-export const HeaderContent = styled.div`
+export const HeaderContentStyle = styled.div`
   width: 100%;
   max-width: 1216px;
   display: flex;
@@ -24,6 +25,7 @@ export const HeaderContent = styled.div`
     h2 {
       color: #222020c0;
       font-size: 16px;
+      margin-top: 10px;
     }
   }
 `;
