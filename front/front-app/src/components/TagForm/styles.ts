@@ -1,10 +1,7 @@
 import styled from "styled-components";
 
-export const TagStyle = styled.div`
-  background: #abd9e046;
+export const TagFormContainerStyle = styled.div`
+  color: #50af7ec7;
   border-radius: 4px;
   padding: 4px 8px 4px 8px;
-  display: flex;
-  gap: 4px;
-
 `;

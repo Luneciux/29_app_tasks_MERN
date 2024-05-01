@@ -1,9 +1,12 @@
-import { DateContainerStyle } from "./styles";
+import { DateContainerStyle, DateContentStyle } from "./styles";
 
 export function DateComponent() {
   return (
     <DateContainerStyle>
-      <h1>DATA</h1>
+      <DateContentStyle>
+        <p className="dia">29,</p>
+        <p>Novembro</p>
+      </DateContentStyle>
     </DateContainerStyle>
   );
 }

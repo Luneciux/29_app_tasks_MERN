@@ -3,7 +3,10 @@ import { TagStyle } from "./styles";
 export function Tag() {
   return (
     <TagStyle>
-      <p>TAG</p>
+      <p>qualquer coisa</p>
+      <span className="material-symbols-outlined">
+        close
+      </span>
     </TagStyle>
   );
 }

@@ -49,7 +49,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background: #fafafa;
+    background: #ececec;
     color: #333333;
   }
 
@@ -67,9 +67,12 @@ export const GlobalStyles = createGlobalStyle`
 //#B8E0AB
 //#ABD9E0
 //#6BE3A4
+//#abd9e046
+//#df9f9fff
+
 
 //BACKGROUND
-//#FAFAFA
+//#ececec
 
 //FONTES
 //#333333
