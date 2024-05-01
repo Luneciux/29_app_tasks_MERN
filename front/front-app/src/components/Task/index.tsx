@@ -1,4 +1,12 @@
-import { TaskContainerStyle, TaskHeaderContainerStyle, TaskActionsStyle, TaskHeaderStyle, TaskDescriptionStyle, TaskTagsStyle } from "./styles";
+import {
+  TaskContainerStyle,
+  TaskHeaderContainerStyle,
+  TaskActionsStyle,
+  TaskHeaderStyle,
+  TaskDescriptionStyle,
+  TaskTagsStyle,
+  ActionStyle
+} from "./styles";
 
 import { Tag } from "../Tag";
 import { TagForm } from "../TagForm";
@@ -12,7 +20,12 @@ export function Task() {
           <h2>09:00h - 12:00h</h2>
         </TaskHeaderStyle>
         <TaskActionsStyle>
-          <p>Deletar</p>
+          <ActionStyle>
+            <p className="edit">Editar</p>
+          </ActionStyle>
+          <ActionStyle>
+            <p className="delete">Deletar</p>
+          </ActionStyle>
         </TaskActionsStyle>
       </TaskHeaderContainerStyle>
       <TaskDescriptionStyle>

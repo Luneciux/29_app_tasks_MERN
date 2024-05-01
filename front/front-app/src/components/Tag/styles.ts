@@ -7,4 +7,7 @@ export const TagStyle = styled.div`
   display: flex;
   gap: 4px;
 
+  .material-symbols-outlined{
+    cursor: pointer;
+  }
 `;

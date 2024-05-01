@@ -10,7 +10,6 @@ export const TaskContainerStyle = styled.div`
 export const TaskHeaderStyle = styled.div`
   display: flex;
   gap: 8px;
-  margin-bottom: 8px;
 `;
 
 export const TaskDescriptionStyle = styled.div`
@@ -36,8 +35,42 @@ export const TaskHeaderContainerStyle = styled.div`
 
 
 export const TaskActionsStyle = styled.div`
-  color: #df9f9fff;
+  display: flex;
   font-weight: 500;
+  gap: 20px;
+
+  .delete{
+    border-radius: 4px;
+    color: #df9f9fff;
+    background: #e7b8b82c;
+    padding: 8px;
+  }
+
+  .delete:hover{
+    background: #e4b4b446;
+    transition: 0.2s;
+  }
+
+  .edit{
+    border-radius: 4px;
+    color: #5ac98fc5;
+    padding: 8px;
+    background: #88ecb825;
+  }
+
+  .edit:hover{
+    background: #85ecb73d;
+    transition: 0.2s;
+  }
 `;
+
+export const ActionStyle = styled.div`
+  display: flex;
+  font-weight: 500;
+  gap: 20px;
+  cursor: pointer;
+
+`;
+
 
 
