@@ -3,7 +3,7 @@ import { TagFormContainerStyle } from "./styles";
 export function TagForm() {
   return (
     <TagFormContainerStyle>
-      <p>new tag</p>
+      <p>nova tag</p>
     </TagFormContainerStyle>
   );
 }

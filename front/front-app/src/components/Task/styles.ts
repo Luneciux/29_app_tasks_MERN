@@ -41,25 +41,26 @@ export const TaskActionsStyle = styled.div`
 
   .delete{
     border-radius: 4px;
-    color: #df9f9fff;
-    background: #e7b8b82c;
+    color: #e47676ff;
+    background: #e4b4b457;
     padding: 8px;
   }
 
   .delete:hover{
-    background: #e4b4b446;
+    background: #e098986e;
     transition: 0.2s;
   }
 
   .edit{
     border-radius: 4px;
-    color: #5ac98fc5;
+    color: #45bb7ed3;
     padding: 8px;
-    background: #88ecb825;
+    background: #85ecb73d;
+
   }
 
   .edit:hover{
-    background: #85ecb73d;
+    background: #6dd49f52;
     transition: 0.2s;
   }
 `;
