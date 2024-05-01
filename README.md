@@ -32,3 +32,5 @@
 
 - Além de ter o node instalado, basta que você clone o projeto e rode, nesse caso com yarn, um yarn (para baixar as dependencias) e um yarn dev
 - Lembre de subir o back juntamente
+
+<img src="./colors.jpeg">
