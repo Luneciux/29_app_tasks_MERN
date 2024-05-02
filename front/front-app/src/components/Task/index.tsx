@@ -13,6 +13,8 @@ import { TagForm } from "../TagForm";
 
 interface TaskProps {
   title: string,
+  date: string,
+  description: string,
 }
 
 export function Task(props: TaskProps) {
@@ -21,7 +23,8 @@ export function Task(props: TaskProps) {
       <TaskHeaderContainerStyle>
         <TaskHeaderStyle>
           <h2>{`${props.title},`}</h2>
-          <h2>09:00h - 12:00h</h2>
+          <h2>{`${props.date}`}</h2>
+
         </TaskHeaderStyle>
         <TaskActionsStyle>
           <ActionStyle>
@@ -33,7 +36,7 @@ export function Task(props: TaskProps) {
         </TaskActionsStyle>
       </TaskHeaderContainerStyle>
       <TaskDescriptionStyle>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+        <p>{`${props.description}`}</p>
       </TaskDescriptionStyle>
       <TaskTagsStyle>
         <Tag />

@@ -16,10 +16,10 @@ export function DailyTasks() {
         <TaskForm />
         <SearchBar />
         <TasksBoardStyle>
-          <Task title="Terminar Atividades"/>
-          <Task title="Fazer Compras"/>
-          <Task title="Fazer Compras"/>
-          <Task title="Fazer Compras"/>
+          <Task title="Terminar Atividades" date="09:00h - 12:00h" description="Teste 1"/>
+          <Task title="Fazer Compras 1" date="09:00h - 12:00h" description="Teste 2"/>
+          <Task title="Fazer Compras 2" date="09:00h - 12:00h" description="Teste 3"/>
+          <Task title="Fazer Compras 3" date="09:00h - 12:00h" description="Teste 4"/>
         </TasksBoardStyle>
       </DailyTasksContainerStyle>
     </>
