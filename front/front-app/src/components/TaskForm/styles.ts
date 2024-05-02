@@ -22,10 +22,8 @@ export const TaskFormHeaderStyle = styled.div`
     font-size: 1.2em;
     font-weight: 600;
     color: #333333;
-    max-width: 500px;
-    width: 150px;
-    min-width: 150px;
     margin: 0;
+    resize: none;
   }
 
   ::-webkit-scrollbar{
@@ -39,10 +37,8 @@ export const TaskFormHeaderStyle = styled.div`
     font-size: 1.2em;
     font-weight: 600;
     color: #333333;
-    max-width: 500px;
-    min-width: 400px;
-    min-height: 80px;
     margin: 0;
+    resize: none;
   }
 `;
 
@@ -73,7 +69,6 @@ export const TaskFormDescriptionStyle = styled.div`
     background: #cecece38;
     border: none;
     outline: none;
-    transition: 0.3s;
   }
 
   ::-webkit-scrollbar{

@@ -11,12 +11,16 @@ import {
 import { Tag } from "../Tag";
 import { TagForm } from "../TagForm";
 
-export function Task() {
+interface TaskProps {
+  title: string,
+}
+
+export function Task(props: TaskProps) {
   return (
     <TaskContainerStyle>
       <TaskHeaderContainerStyle>
         <TaskHeaderStyle>
-          <h2>Fazer Compras,</h2>
+          <h2>{`${props.title},`}</h2>
           <h2>09:00h - 12:00h</h2>
         </TaskHeaderStyle>
         <TaskActionsStyle>

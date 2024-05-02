@@ -14,8 +14,8 @@ export function TaskForm() {
         <TaskFormHeaderStyle>
           {/* <input type="text" className="text-input-title" placeholder="Título,"/>
           <input type="text" className="text-input-hour" placeholder="Ínicio - Fim (00:00h - 00:00h)"/> */}
-          <textarea name="text-input-title" id="text-input-title" className="text-input-title" placeholder="Título,"/>
-          <textarea name="text-input-date" id="text-input-date" className="text-input-date" placeholder="Ínicio - Fim (00:00h - 00:00h)"/>
+          <textarea name="text-input-title" id="text-input-title" className="text-input-title" placeholder="Título," cols={18} rows={3}/>
+          <textarea name="text-input-date" id="text-input-date" className="text-input-date" placeholder="Ínicio - Fim (00:00h - 00:00h)" cols={25} rows={3}/>
         </TaskFormHeaderStyle>
         <TaskFormActionsStyle>
           <ActionStyle>
