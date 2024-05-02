@@ -24,7 +24,7 @@ export function TaskForm() {
         </TaskFormActionsStyle>
       </TaskFormHeaderContainerStyle>
       <TaskFormDescriptionStyle>
-        <input type="text" className="text-input-description" placeholder="Escreva algo relacionado a task"/>
+        <textarea name="text-input-description" id="text-input-description" className="text-input-description" placeholder="Escreva algo relacionado a task"/>
       </TaskFormDescriptionStyle>
     </TaskFormContainerStyle>
   );

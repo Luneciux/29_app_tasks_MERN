@@ -23,8 +23,8 @@ export const TaskFormHeaderStyle = styled.div`
     font-weight: 600;
     color: #333333;
     max-width: 500px;
-    width: 100px;
-    min-width: 100px;
+    width: 150px;
+    min-width: 150px;
     margin: 0;
   }
 
@@ -58,8 +58,9 @@ export const TaskFormDescriptionStyle = styled.div`
     border: none;
     outline: none;
     width: 100%;
-    height: fit-content;
-    word-wrap: break-word;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100px;
     font-size: 18px;
     font-weight: 500;
     color: #333333ce;
@@ -73,6 +74,10 @@ export const TaskFormDescriptionStyle = styled.div`
     border: none;
     outline: none;
     transition: 0.3s;
+  }
+
+  ::-webkit-scrollbar{
+    display: none;
   }
 
 `;
