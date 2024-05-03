@@ -1,9 +1,13 @@
 import { TagStyle } from "./styles";
 
-export function Tag() {
+interface TagProps {
+  title: string
+}
+
+export function Tag(props: TagProps) {
   return (
     <TagStyle>
-      <p>qualquer coisa</p>
+      <p>{props.title}</p>
       <span className="material-symbols-outlined">
         close
       </span>

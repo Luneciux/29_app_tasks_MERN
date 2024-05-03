@@ -9,12 +9,14 @@ import {
 } from "./styles";
 
 import { Tag } from "../Tag";
+import { TagType } from "../../types/Tag"
 import { TagForm } from "../TagForm";
 
 interface TaskProps {
   title: string,
   date: string,
   description: string,
+  tags: TagType[];
 }
 
 export function Task(props: TaskProps) {
@@ -39,16 +41,9 @@ export function Task(props: TaskProps) {
         <p>{`${props.description}`}</p>
       </TaskDescriptionStyle>
       <TaskTagsStyle>
-        <Tag />
-        <Tag />
-        <Tag />
-        <Tag />
-        <Tag />
-        <Tag />
-        <Tag />
-        <Tag />
-        <Tag />
-
+        {props.tags.map((tag) => (
+          <Tag title={`${tag.title}  teste com map`} key={tag._id}/>
+        ))}
         <TagForm />
       </TaskTagsStyle>
     </TaskContainerStyle>
