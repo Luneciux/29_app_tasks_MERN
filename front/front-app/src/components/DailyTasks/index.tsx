@@ -4,18 +4,14 @@ import { DateComponent } from "../Date";
 import { TaskForm } from "../TaskForm";
 import { SearchBar } from "../SearchBar";
 import { Task } from "../Task";
-import { TagType } from "../../types/Tag";
-
-const tags: TagType[] = [
-  {
-    "_id": "663530c8d2940be8169b79d8",
-    "title": "teste_5",
-  }
-];
-
-export function DailyTasks() {
+import { TaskType } from "../../types/Task";
 
 
+interface DailyTasksType {
+  tasks: TaskType[];
+}
+
+export function DailyTasks(props: DailyTasksType) {
   return (
     <>
       <DailyTasksContainerStyle>
@@ -23,8 +19,9 @@ export function DailyTasks() {
         <TaskForm />
         <SearchBar />
         <TasksBoardStyle>
-          <Task title="Terminar Atividades" date="09:00h - 12:00h" description="Teste 1" tags={tags}/>
-          <Task title="Fazer Compras 1" date="09:00h - 12:00h" description="Teste 2" tags={[]} />
+          {props.tasks.map((task) => (
+            <Task title={`${task.title}`} date={task.date} description={task.description} key={task._id} _id={task._id} tags={task.tags}/>
+          ))}
         </TasksBoardStyle>
       </DailyTasksContainerStyle>
     </>
