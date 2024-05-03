@@ -10,10 +10,6 @@ const tags: TagType[] = [
   {
     "_id": "663530c8d2940be8169b79d8",
     "title": "teste_5",
-  },
-  {
-    "_id": "663530c8d2940be8169b79d8",
-    "title": "teste_6",
   }
 ];
 

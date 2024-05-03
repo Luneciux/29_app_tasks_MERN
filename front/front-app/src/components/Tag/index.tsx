@@ -1,10 +1,7 @@
 import { TagStyle } from "./styles";
+import { TagType } from "../../types/Tag";
 
-interface TagProps {
-  title: string
-}
-
-export function Tag(props: TagProps) {
+export function Tag(props: TagType) {
   return (
     <TagStyle>
       <p>{props.title}</p>
