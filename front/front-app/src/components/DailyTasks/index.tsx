@@ -20,7 +20,7 @@ export function DailyTasks(props: DailyTasksType) {
         <SearchBar />
         <TasksBoardStyle>
           {props.tasks.map((task) => (
-            <Task title={`${task.title}`} date={task.date} description={task.description} key={task._id} _id={task._id} tags={task.tags}/>
+            <Task {...task}/>
           ))}
         </TasksBoardStyle>
       </DailyTasksContainerStyle>

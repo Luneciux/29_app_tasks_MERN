@@ -12,13 +12,13 @@ import { Tag } from "../Tag";
 import { TagForm } from "../TagForm";
 import { TaskType } from "../../types/Task";
 
-export function Task(props: TaskType) {
+export function Task(task : TaskType) {
   return (
     <TaskContainerStyle>
       <TaskHeaderContainerStyle>
         <TaskHeaderStyle>
-          <h2>{`${props.title},`}</h2>
-          <h2>{`${props.date}`}</h2>
+          <h2>{`${task.title},`}</h2>
+          <h2>{`${task.date}`}</h2>
 
         </TaskHeaderStyle>
         <TaskActionsStyle>
@@ -31,10 +31,10 @@ export function Task(props: TaskType) {
         </TaskActionsStyle>
       </TaskHeaderContainerStyle>
       <TaskDescriptionStyle>
-        <p>{`${props.description}`}</p>
+        <p>{`${task.description}`}</p>
       </TaskDescriptionStyle>
       <TaskTagsStyle>
-        {props.tags.map((tag) => (
+        {task.tags.map((tag) => (
           <Tag title={`${tag.title}`} key={tag._id} _id={tag._id}/>
         ))}
         <TagForm />
