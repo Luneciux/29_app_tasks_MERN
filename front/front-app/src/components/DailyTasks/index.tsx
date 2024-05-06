@@ -18,11 +18,15 @@ export function DailyTasks(props: DailyTasksType) {
         <DateComponent />
         <TaskForm />
         <SearchBar />
-        <TasksBoardStyle>
-          {props.tasks.map((task) => (
-            <Task {...task}/>
-          ))}
-        </TasksBoardStyle>
+        {
+          (!props.tasks) ? <h1>teste</h1> :
+
+          <TasksBoardStyle>
+            {props.tasks.map((task) => (
+              <Task {...task}/>
+            ))}
+          </TasksBoardStyle>
+        }
       </DailyTasksContainerStyle>
     </>
   );
