@@ -13,14 +13,18 @@ import { TagForm } from "../TagForm";
 import { TaskType } from "../../types/Task";
 
 export function Task(task : TaskType) {
+
   return (
+
     <TaskContainerStyle>
+
       <TaskHeaderContainerStyle>
+
         <TaskHeaderStyle>
           <h2>{`${task.title},`}</h2>
           <h2>{`${task.date}`}</h2>
-
         </TaskHeaderStyle>
+
         <TaskActionsStyle>
           <ActionStyle>
             <p className="edit">Editar</p>
@@ -29,16 +33,20 @@ export function Task(task : TaskType) {
             <p className="delete">Deletar</p>
           </ActionStyle>
         </TaskActionsStyle>
+
       </TaskHeaderContainerStyle>
+
       <TaskDescriptionStyle>
         <p>{`${task.description}`}</p>
       </TaskDescriptionStyle>
+
       <TaskTagsStyle>
         {task.tags.map((tag) => (
           <Tag title={`${tag.title}`} key={tag._id} _id={tag._id}/>
         ))}
         <TagForm />
       </TaskTagsStyle>
+
     </TaskContainerStyle>
   );
 }

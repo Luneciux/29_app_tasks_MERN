@@ -10,47 +10,47 @@ export function App() {
   const test = true;
 
   const tasks: TaskType[] = [
-    // {
-    //   "_id": "66354400d2940be8169b79dc",
-    //   "title": "teste_4",
-    //   "description": "teste",
-    //   "date": "2024-04-26T20:09:16.330Z",
-    //   "tags": [
-    //     {
-    //       "_id": "1",
-    //       "title": "teste"
-    //     },
-    //     {
-    //       "_id": "2",
-    //       "title": "teste2"
-    //     },
-    //   ],
-    // },
-    // {
-    //   "_id": "66354400d294",
-    //   "title": "teste_5",
-    //   "description": "teste23123123",
-    //   "date": "2024-04-26T20:09:16.330Z",
-    //   "tags": [
-    //     {
-    //       "_id": "1",
-    //       "title": "teste"
-    //     },
-    //     {
-    //       "_id": "2",
-    //       "title": "teste2"
-    //     },
-    //     {
-    //       "_id": "4",
-    //       "title": "teste2"
-    //     },
-    //     {
-    //       "_id": "3",
-    //       "title": "teste2"
-    //     },
+    {
+      "_id": "66354400d2940be8169b79dc",
+      "title": "teste_4",
+      "description": "teste",
+      "date": "2024-04-26T20:09:16.330Z",
+      "tags": [
+        {
+          "_id": "1",
+          "title": "teste"
+        },
+        {
+          "_id": "2",
+          "title": "teste2"
+        },
+      ],
+    },
+    {
+      "_id": "66354400d294",
+      "title": "teste_5",
+      "description": "teste23123123",
+      "date": "2024-04-26T20:09:16.330Z",
+      "tags": [
+        {
+          "_id": "1",
+          "title": "teste"
+        },
+        {
+          "_id": "2",
+          "title": "teste2"
+        },
+        {
+          "_id": "4",
+          "title": "teste2"
+        },
+        {
+          "_id": "3",
+          "title": "teste2"
+        },
 
-    //   ],
-    // },
+      ],
+    },
   ];
 
   return (
