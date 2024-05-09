@@ -16,11 +16,13 @@ export const TaskHeaderStyle = styled.div`
 
 export const TaskTitleStyle = styled.span`
   max-width: 70%;
-  width: auto;
+  width: 70%;
 `;
 
 export const TaskTimeSpanStyle = styled.span`
   width: auto;
+  margin: 0px 0px 0px 20px;
+
 `;
 
 export const TaskDescriptionStyle = styled.div`
@@ -28,7 +30,6 @@ export const TaskDescriptionStyle = styled.div`
   font-weight: 500;
   color: #333333ce;
   padding: 16px 0px 16px 0px;
-  text-align: justify;
 `;
 
 export const TaskTagsStyle = styled.div`
@@ -41,7 +42,7 @@ export const TaskTagsStyle = styled.div`
 export const TaskHeaderContainerStyle = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 `;
 
 

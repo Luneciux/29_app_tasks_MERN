@@ -20,12 +20,12 @@ export function Task(task : TaskType) {
   const timeSpan = new Date(task.date);
 
   const startTime = () => {
-    return `${ formatedDate.getHours()  < 10 ? '0' : '' }${ formatedDate.getHours()}:${ (formatedDate.getMinutes() < 10 ? '0' : '') }${ formatedDate.getMinutes() } `;
+    return `${ formatedDate.getHours()  < 10 ? '0' : '' }${ formatedDate.getHours()}:${ (formatedDate.getMinutes() < 10 ? '0' : '') }${ formatedDate.getMinutes() }h `;
   }
 
   const finishTime = () => {
     timeSpan.setHours(timeSpan.getHours() + task.timeSpanHours);
-    return `${ timeSpan.getHours()  < 10 ? '0' : '' }${ timeSpan.getHours()}:${ (timeSpan.getMinutes() < 10 ? '0' : '') }${ timeSpan.getMinutes() } `;
+    return `${ timeSpan.getHours()  < 10 ? '0' : '' }${ timeSpan.getHours()}:${ (timeSpan.getMinutes() < 10 ? '0' : '') }${ timeSpan.getMinutes() }h `;
   }
 
   return (
@@ -35,7 +35,7 @@ export function Task(task : TaskType) {
       <TaskHeaderContainerStyle>
 
         <TaskHeaderStyle>
-          <TaskTitleStyle><h2>{`${task.title},`}</h2></TaskTitleStyle>
+          <TaskTitleStyle><h2>{`${task.title}`}</h2></TaskTitleStyle>
           <TaskTimeSpanStyle><h2>{`${startTime()} - ${finishTime()}`}</h2></TaskTimeSpanStyle>
         </TaskHeaderStyle>
 
