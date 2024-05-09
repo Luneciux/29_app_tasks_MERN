@@ -14,6 +14,8 @@ import { TaskType } from "../../types/Task";
 
 export function Task(task : TaskType) {
 
+  const formatedDate = new Date(task.date);
+
   return (
 
     <TaskContainerStyle>
@@ -22,7 +24,7 @@ export function Task(task : TaskType) {
 
         <TaskHeaderStyle>
           <h2>{`${task.title},`}</h2>
-          <h2>{`${task.date}`}</h2>
+          <h2>{`${formatedDate.getHours()}:${formatedDate.getMinutes()}`}</h2>
         </TaskHeaderStyle>
 
         <TaskActionsStyle>
