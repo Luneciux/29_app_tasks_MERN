@@ -16,6 +16,10 @@ export function Task(task : TaskType) {
 
   const formatedDate = new Date(task.date);
 
+  // const timeSpan = (date: string) => {
+  //   return ``;
+  // }
+
   return (
 
     <TaskContainerStyle>
