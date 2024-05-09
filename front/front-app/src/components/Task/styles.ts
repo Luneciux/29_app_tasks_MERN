@@ -10,6 +10,7 @@ export const TaskContainerStyle = styled.div`
 export const TaskHeaderStyle = styled.div`
   display: flex;
   gap: 8px;
+  max-width: 60%;
 `;
 
 export const TaskDescriptionStyle = styled.div`

@@ -15,10 +15,16 @@ import { TaskType } from "../../types/Task";
 export function Task(task : TaskType) {
 
   const formatedDate = new Date(task.date);
+  const timeSpan = new Date(task.date);
 
-  // const timeSpan = (date: string) => {
-  //   return ``;
-  // }
+  const startTime = () => {
+    return `${ formatedDate.getHours()  < 10 ? '0' : '' }${ formatedDate.getHours()}:${ (formatedDate.getMinutes() < 10 ? '0' : '') }${ formatedDate.getMinutes() } `;
+  }
+
+  const finishTime = () => {
+    timeSpan.setHours(timeSpan.getHours() + task.timeSpanHours);
+    return `${ timeSpan.getHours()  < 10 ? '0' : '' }${ timeSpan.getHours()}:${ (timeSpan.getMinutes() < 10 ? '0' : '') }${ timeSpan.getMinutes() } `;
+  }
 
   return (
 
@@ -28,7 +34,7 @@ export function Task(task : TaskType) {
 
         <TaskHeaderStyle>
           <h2>{`${task.title},`}</h2>
-          <h2>{`${formatedDate.getHours()}:${formatedDate.getMinutes()}`}</h2>
+          <h2>{`${startTime()} - ${finishTime()}`}</h2>
         </TaskHeaderStyle>
 
         <TaskActionsStyle>

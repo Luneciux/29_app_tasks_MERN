@@ -12,9 +12,10 @@ export function App() {
   const tasks: TaskType[] = [
     {
       "_id": "66354400d2940be8169b79dc",
-      "title": "teste_4",
+      "title": "FAZER OS TESTES PEGA O PAIFAZER OS TESTES PEGA O PAIFAZER OS TESTES PEGA O PAI",
       "description": "teste",
-      "date": "2024-04-26T20:09:16.330Z",
+      "date": "2024-04-26T20:24:16.330Z",
+      "timeSpanHours": 2,
       "tags": [
         {
           "_id": "1",
@@ -31,6 +32,7 @@ export function App() {
       "title": "teste_5",
       "description": "teste23123123",
       "date": "2024-04-26T20:09:16.330Z",
+      "timeSpanHours": 2,
       "tags": [
         {
           "_id": "1",
