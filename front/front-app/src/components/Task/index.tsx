@@ -5,7 +5,9 @@ import {
   TaskHeaderStyle,
   TaskDescriptionStyle,
   TaskTagsStyle,
-  ActionStyle
+  ActionStyle,
+  TaskTitleStyle,
+  TaskTimeSpanStyle
 } from "./styles";
 
 import { Tag } from "../Tag";
@@ -33,8 +35,8 @@ export function Task(task : TaskType) {
       <TaskHeaderContainerStyle>
 
         <TaskHeaderStyle>
-          <h2>{`${task.title},`}</h2>
-          <h2>{`${startTime()} - ${finishTime()}`}</h2>
+          <TaskTitleStyle><h2>{`${task.title},`}</h2></TaskTitleStyle>
+          <TaskTimeSpanStyle><h2>{`${startTime()} - ${finishTime()}`}</h2></TaskTimeSpanStyle>
         </TaskHeaderStyle>
 
         <TaskActionsStyle>

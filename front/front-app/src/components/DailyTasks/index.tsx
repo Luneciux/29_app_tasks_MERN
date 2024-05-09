@@ -19,11 +19,11 @@ export function DailyTasks(props: DailyTasksType) {
         <TaskForm />
         <SearchBar />
         {
-          (!props.tasks) ? <h1>teste</h1> :
+          (!props.tasks) ? null :
 
           <TasksBoardStyle>
             {props.tasks.map((task) => (
-              <Task {...task}/>
+              <Task {...task} key={task._id}/>
             ))}
           </TasksBoardStyle>
         }
