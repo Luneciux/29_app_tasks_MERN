@@ -5,6 +5,7 @@ import { TaskForm } from "../TaskForm";
 import { SearchBar } from "../SearchBar";
 import { Task } from "../Task";
 import { TaskType } from "../../types/Task";
+import { useState, useEffect } from "react";
 
 
 interface DailyTasksType {
@@ -12,15 +13,22 @@ interface DailyTasksType {
 }
 
 export function DailyTasks(props: DailyTasksType) {
+
+  const [searchString, setSearchString] = useState("");
+
+
+  useEffect(() => {
+
+  }, [searchString]);
+
   return (
     <>
       <DailyTasksContainerStyle>
         <DateComponent />
         <TaskForm />
-        <SearchBar />
+        <SearchBar setSearchString={setSearchString} searchString={searchString}/>
         {
-          (!props.tasks) ? null :
-
+          (!props.tasks) ? "TEZTERFWEGFWERG" :
           <TasksBoardStyle>
             {props.tasks.map((task) => (
               <Task {...task} key={task._id}/>
