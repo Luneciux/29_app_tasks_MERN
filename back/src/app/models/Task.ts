@@ -22,13 +22,13 @@ export const Task = model("Task", new Schema( {
   },
 
   tags: {
-    type: [{
-      tagId: {
+    type: [
+      {
         type: Schema.Types.ObjectId,
         ref: "Tag",
         required: false,
       }
-    }],
+    ],
     required: false,
   },
 

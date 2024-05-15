@@ -16,6 +16,8 @@ import { TaskType } from "../../types/Task";
 
 export function Task(task : TaskType) {
 
+  console.log(task.tags.map((tag) => (tag)));
+
   const formatedDate = new Date(task.date);
   const timeSpan = new Date(task.date);
 

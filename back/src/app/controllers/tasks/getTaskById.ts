@@ -7,7 +7,7 @@ export async function getTaskById(req: Request, res: Response) {
 
     const { taskId } = req.params;
 
-    const tasks = await Task.find().where("_id").equals( taskId ).populate("tags.tagId");
+    const tasks = await Task.find().where("_id").equals( taskId ).populate("tags");
     res.status(200).json(tasks);
 
 
