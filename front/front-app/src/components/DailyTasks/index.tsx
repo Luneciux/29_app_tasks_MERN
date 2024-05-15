@@ -22,13 +22,10 @@ const showTasks = (tasks: TaskType[]) => (
 
 export function DailyTasks(props: DailyTasksType) {
 
-  console.log();
-
   const [searchString, setSearchString] = useState("");
 
 
   useEffect(() => {
-
   }, [searchString]);
 
   return (
