@@ -12,7 +12,17 @@ interface DailyTasksType {
   tasks: TaskType[];
 }
 
+const showTasks = (tasks: TaskType[]) => (
+  <TasksBoardStyle>
+    {tasks.map((task) => (
+      <Task {...task} key={task._id}/>
+    ))}
+  </TasksBoardStyle>
+)
+
 export function DailyTasks(props: DailyTasksType) {
+
+  console.log();
 
   const [searchString, setSearchString] = useState("");
 
@@ -28,12 +38,7 @@ export function DailyTasks(props: DailyTasksType) {
         <TaskForm />
         <SearchBar setSearchString={setSearchString} searchString={searchString}/>
         {
-          (!props.tasks) ? "TEZTERFWEGFWERG" :
-          <TasksBoardStyle>
-            {props.tasks.map((task) => (
-              <Task {...task} key={task._id}/>
-            ))}
-          </TasksBoardStyle>
+          props.tasks.length !== 0 ? showTasks(props.tasks) : <h1>Parece não haver tarefas no momento.</h1>
         }
       </DailyTasksContainerStyle>
     </>
