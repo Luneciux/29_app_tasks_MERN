@@ -6,8 +6,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "nodemon src/index.ts",
-    "start": "node dist",
-    "db": "docker run --name mongo -p 27017:27017 -d mongodb/mongodb-community-server:latest"
+    "start": "node dist"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.0.2",
