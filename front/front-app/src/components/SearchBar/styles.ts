@@ -5,6 +5,7 @@ export const SearchBarStyle = styled.div`
   gap: 16px;
   font-size: 20px;
   align-items: center;
+  margin-bottom: 30px;
 
   .material-symbols-outlined{
     font-weight: 600;

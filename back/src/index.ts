@@ -4,13 +4,19 @@ import mongoose from "mongoose";
 import { router } from "./router";
 
 
-mongoose.connect("mongodb://localhost:27017")
+mongoose.connect("mongodb://127.0.0.1:27017")
 .then(() => {
     const app = express();
     const port = 3001;
 
-    app.use(express.json());
+    app.use((req, res, next) => {
+      res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173/");
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      res.setHeader("Access-Control-Allow-Origin", "*");
 
+      next();
+    });
+    app.use(express.json());
     app.use(router);
 
     app.listen(port, () => {

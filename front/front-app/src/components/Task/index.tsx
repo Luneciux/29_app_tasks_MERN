@@ -5,27 +5,42 @@ import {
   TaskHeaderStyle,
   TaskDescriptionStyle,
   TaskTagsStyle,
-  ActionStyle
+  ActionStyle,
+  TaskTitleStyle,
+  TaskTimeSpanStyle
 } from "./styles";
 
 import { Tag } from "../Tag";
 import { TagForm } from "../TagForm";
+import { TaskType } from "../../types/Task";
 
-interface TaskProps {
-  title: string,
-  date: string,
-  description: string,
-}
+export function Task(task : TaskType) {
 
-export function Task(props: TaskProps) {
+  console.log(task.tags.map((tag) => (tag)));
+
+  const formatedDate = new Date(task.date);
+  const timeSpan = new Date(task.date);
+
+  const startTime = () => {
+    return `${ formatedDate.getHours()  < 10 ? '0' : '' }${ formatedDate.getHours()}:${ (formatedDate.getMinutes() < 10 ? '0' : '') }${ formatedDate.getMinutes() }h `;
+  }
+
+  const finishTime = () => {
+    timeSpan.setHours(timeSpan.getHours() + task.timeSpanHours);
+    return `${ timeSpan.getHours()  < 10 ? '0' : '' }${ timeSpan.getHours()}:${ (timeSpan.getMinutes() < 10 ? '0' : '') }${ timeSpan.getMinutes() }h `;
+  }
+
   return (
-    <TaskContainerStyle>
-      <TaskHeaderContainerStyle>
-        <TaskHeaderStyle>
-          <h2>{`${props.title},`}</h2>
-          <h2>{`${props.date}`}</h2>
 
+    <TaskContainerStyle>
+
+      <TaskHeaderContainerStyle>
+
+        <TaskHeaderStyle>
+          <TaskTitleStyle><h2>{`${task.title}`}</h2></TaskTitleStyle>
+          <TaskTimeSpanStyle><h2>{`${startTime()} - ${finishTime()}`}</h2></TaskTimeSpanStyle>
         </TaskHeaderStyle>
+
         <TaskActionsStyle>
           <ActionStyle>
             <p className="edit">Editar</p>
@@ -34,23 +49,20 @@ export function Task(props: TaskProps) {
             <p className="delete">Deletar</p>
           </ActionStyle>
         </TaskActionsStyle>
-      </TaskHeaderContainerStyle>
-      <TaskDescriptionStyle>
-        <p>{`${props.description}`}</p>
-      </TaskDescriptionStyle>
-      <TaskTagsStyle>
-        <Tag />
-        <Tag />
-        <Tag />
-        <Tag />
-        <Tag />
-        <Tag />
-        <Tag />
-        <Tag />
-        <Tag />
 
+      </TaskHeaderContainerStyle>
+
+      <TaskDescriptionStyle>
+        <p>{`${task.description}`}</p>
+      </TaskDescriptionStyle>
+
+      <TaskTagsStyle>
+        {task.tags.map((tag) => (
+          <Tag title={`${tag.title}`} key={tag._id} _id={tag._id}/>
+        ))}
         <TagForm />
       </TaskTagsStyle>
+
     </TaskContainerStyle>
   );
 }

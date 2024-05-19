@@ -4,23 +4,39 @@ import { DateComponent } from "../Date";
 import { TaskForm } from "../TaskForm";
 import { SearchBar } from "../SearchBar";
 import { Task } from "../Task";
+import { TaskType } from "../../types/Task";
+import { useState, useEffect } from "react";
 
 
-export function DailyTasks() {
+interface DailyTasksType {
+  tasks: TaskType[];
+}
 
+const showTasks = (tasks: TaskType[]) => (
+  <TasksBoardStyle>
+    {tasks.map((task) => (
+      <Task {...task} key={task._id}/>
+    ))}
+  </TasksBoardStyle>
+)
+
+export function DailyTasks(props: DailyTasksType) {
+
+  const [searchString, setSearchString] = useState("");
+
+
+  useEffect(() => {
+  }, [searchString]);
 
   return (
     <>
       <DailyTasksContainerStyle>
         <DateComponent />
         <TaskForm />
-        <SearchBar />
-        <TasksBoardStyle>
-          <Task title="Terminar Atividades" date="09:00h - 12:00h" description="Teste 1"/>
-          <Task title="Fazer Compras 1" date="09:00h - 12:00h" description="Teste 2"/>
-          <Task title="Fazer Compras 2" date="09:00h - 12:00h" description="Teste 3"/>
-          <Task title="Fazer Compras 3" date="09:00h - 12:00h" description="Teste 4"/>
-        </TasksBoardStyle>
+        <SearchBar setSearchString={setSearchString} searchString={searchString}/>
+        {
+          props.tasks.length !== 0 ? showTasks(props.tasks) : <h1>Parece não haver tarefas no momento.</h1>
+        }
       </DailyTasksContainerStyle>
     </>
   );
