@@ -1,8 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
-
 import { router } from "./router";
-
 
 mongoose.connect("mongodb://127.0.0.1:27017")
 .then(() => {
@@ -16,6 +14,7 @@ mongoose.connect("mongodb://127.0.0.1:27017")
 
       next();
     });
+
     app.use(express.json());
     app.use(router);
 
@@ -26,4 +25,3 @@ mongoose.connect("mongodb://127.0.0.1:27017")
 
   })
   .catch((e) => console.log(`erro: ${e}`));
-
