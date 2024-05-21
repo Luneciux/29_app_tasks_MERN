@@ -1,4 +1,4 @@
-# APP TASKS
+# APP TASKS - MERN
 
 ### Dois projetos separados nas pastas do repositório
 
