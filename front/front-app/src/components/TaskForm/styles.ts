@@ -24,6 +24,7 @@ export const TaskFormHeaderStyle = styled.div`
     color: #333333;
     margin: 0;
     resize: none;
+    padding-right: 15px;
   }
 
   ::-webkit-scrollbar{
@@ -33,13 +34,26 @@ export const TaskFormHeaderStyle = styled.div`
   .text-input-date{
     background: transparent;
     border: none;
+    border-radius: 4px;
     outline: none;
     font-size: 1.2em;
     font-weight: 600;
-    color: #333333;
+    color: #858585;
     margin: 0;
     resize: none;
+    height: fit-content;
+    padding: 0px 12px 0px 12px;
   }
+
+  .text-input-date::-webkit-calendar-picker-indicator{
+    filter: invert(56%) sepia(4%) saturate(14%) hue-rotate(61deg) brightness(94%) contrast(85%);
+  }
+
+  .time-input-separator{
+    height: fit-content;
+    padding: 5px 20px 0px 20px;
+  }
+
 `;
 
 export const TaskFormDescriptionStyle = styled.div`

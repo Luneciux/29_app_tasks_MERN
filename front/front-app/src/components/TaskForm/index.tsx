@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   TaskFormContainerStyle,
   TaskFormHeaderContainerStyle,
@@ -8,14 +9,18 @@ import {
 } from "./styles";
 
 export function TaskForm() {
+  const [startHour, setStartHour] = useState("00:00");
+
+  const handleHours = (value: string) => {setStartHour(value)};
+
   return (
     <TaskFormContainerStyle>
       <TaskFormHeaderContainerStyle>
         <TaskFormHeaderStyle>
-          {/* <input type="text" className="text-input-title" placeholder="Título,"/>
-          <input type="text" className="text-input-hour" placeholder="Ínicio - Fim (00:00h - 00:00h)"/> */}
-          <textarea name="text-input-title" id="text-input-title" className="text-input-title" placeholder="Título," cols={18} rows={3}/>
-          <textarea name="text-input-date" id="text-input-date" className="text-input-date" placeholder="Ínicio - Fim (00:00h - 00:00h)" cols={25} rows={3}/>
+          <textarea name="text-input-title" id="text-input-title" className="text-input-title" placeholder="Título," cols={20} rows={3}/>
+          <input type="time" name="text-input-date" id="text-input-date-1" className="text-input-date" value={startHour}/>
+          <span className="time-input-separator">até</span>
+          <input type="time" name="text-input-date-span" id="text-input-date-span" className="text-input-date" step="1800" value={startHour}/>
         </TaskFormHeaderStyle>
         <TaskFormActionsStyle>
           <ActionStyle>
