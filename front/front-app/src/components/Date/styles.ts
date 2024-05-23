@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const DateContainerStyle = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
 export const DateContentStyle = styled.div`

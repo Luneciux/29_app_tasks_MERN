@@ -25,9 +25,10 @@ export function DailyTasks({ tasks } : DailyTasksType) {
   const [searchString, setSearchString] = useState("");
   const [filteredTasks, setFilteredTasks] = useState<TaskType[]>(tasks);
 
+  const filterTasks = () => {setFilteredTasks(tasks.filter((task) => task.title.includes(searchString)))};
+
   useEffect(() => {
-    console.log(searchString, tasks, filteredTasks);
-    setFilteredTasks(tasks.filter((task) => task.title.includes(searchString)));
+    filterTasks();
   }, [searchString]);
 
   return (
