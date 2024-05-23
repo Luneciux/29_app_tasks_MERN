@@ -1,3 +1,4 @@
+import { useState, createContext, SetStateAction } from "react";
 import { GlobalStyles } from "./styles/GlobalStyles";
 
 import { Header } from "./components/Header";
@@ -5,29 +6,65 @@ import { DailyTasks } from "./components/DailyTasks";
 import { MontlyTasks } from "./components/MontlyTasks";
 import { Footer } from "./components/Footer";
 import { TaskType } from "./types/Task";
-import { api } from "./utils/api";
-import { useState, useEffect } from "react";
+
+import { getTasks, getUser } from "./utils/api";
+
+interface TasksContextType {
+  tasks?: TaskType[],
+  setTasks: React.Dispatch<SetStateAction<TaskType[]>>
+}
+
+interface TasksModeContextType {
+  tasksMode?: string,
+  setTasksMode: React.Dispatch<SetStateAction<string>>
+}
+
+interface UserContextType {
+  user?: string,
+  setUser: React.Dispatch<SetStateAction<string>>
+}
+
+export const TasksContext = createContext< TasksContextType >({ setTasks: () => {} });
+export const TasksModeContext = createContext< TasksModeContextType >({ setTasksMode: () => {} });
+export const UserContext = createContext< UserContextType >({ setUser: () => {} });
 
 export function App() {
-  const test = true;
 
+  const [user, setUser] = useState("");
   const [tasks, setTasks] = useState<TaskType[]>([]);
-  const user = "664e61997980052448116ec7";
+  const [tasksMode, setTasksMode] = useState("daily");
 
-  //context -> hook -> acessar dados -> (task, setTask, fazerReq)
+  if (!user) {
+    getUser(setUser);
+  }
 
-  useEffect(() => {
-    api.get('/tasks')
-      .then(({data}) => {
-        setTasks(data);
-      });
-  }, []);
+
+  getTasks(user, setTasks);
+
 
   return (
     <>
       <GlobalStyles />
       <Header />
-      { test ? <DailyTasks tasks={tasks} user={user}/> : < MontlyTasks/> }
+      <TasksContext.Provider value={
+        { tasks, setTasks }
+      }>
+        <UserContext.Provider value={
+          { user, setUser }
+        }>
+          <TasksModeContext.Provider value={
+            { tasksMode, setTasksMode }
+          }>
+            { tasksMode === "daily" ? <DailyTasks tasks={tasks}/> : < MontlyTasks/> }
+
+          </TasksModeContext.Provider>
+
+
+
+        </UserContext.Provider>
+
+      </TasksContext.Provider>
+
       <Footer />
     </>
   );

@@ -11,11 +11,8 @@ import {
   ActionStyle
 } from "./styles";
 
-interface TaskFormType {
-  user: string
-}
 
-export function TaskForm({ user }: TaskFormType) {
+export function TaskForm() {
 
   const [startHour, setStartHour] = useState<string>("00:00");
   const [finishHour, setFinishHour] = useState<string>("00:00");
@@ -40,13 +37,18 @@ export function TaskForm({ user }: TaskFormType) {
     timeBreaker = finishHour.split(":");
     timeSpanHours.setHours(parseInt(timeBreaker[0]), parseInt(timeBreaker[1]));
 
+    // const {
+    //   user,
+    //   setUser
+    // } = useContext(UserContext);
+
     const newTask: TaskType = {
       title,
       description,
       date: date.toISOString(),
       timeSpanHours: timeSpanHours.toISOString(),
       tags: [],
-      userId: user
+      userId: ""
     };
 
     console.log(newTask);
