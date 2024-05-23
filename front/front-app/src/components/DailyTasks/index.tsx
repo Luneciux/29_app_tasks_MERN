@@ -1,6 +1,5 @@
 import { DailyTasksContainerStyle, TasksBoardStyle } from "./styles";
 
-import { DateComponent } from "../Date";
 import { TaskForm } from "../TaskForm";
 import { SearchBar } from "../SearchBar";
 import { Task } from "../Task";
@@ -34,7 +33,6 @@ export function DailyTasks({ tasks } : DailyTasksType) {
   return (
     <>
       <DailyTasksContainerStyle>
-        <DateComponent />
         <TaskForm />
         <SearchBar setSearchString={setSearchString} searchString={searchString}/>
         {

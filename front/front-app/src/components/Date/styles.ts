@@ -3,6 +3,9 @@ import styled from "styled-components";
 export const DateContainerStyle = styled.div`
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  max-width: 1216px;
+  margin: 40px auto;
 `;
 
 export const DateContentStyle = styled.div`

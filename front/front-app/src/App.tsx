@@ -8,6 +8,7 @@ import { Footer } from "./components/Footer";
 import { TaskType } from "./types/Task";
 
 import { getTasks, getUser } from "./utils/api";
+import { DateComponent } from "./components/Date";
 
 interface TasksContextType {
   tasks?: TaskType[],
@@ -46,23 +47,16 @@ export function App() {
     <>
       <GlobalStyles />
       <Header />
-      <TasksContext.Provider value={
-        { tasks, setTasks }
-      }>
-        <UserContext.Provider value={
-          { user, setUser }
-        }>
-          <TasksModeContext.Provider value={
-            { tasksMode, setTasksMode }
-          }>
+      <TasksContext.Provider value={{ tasks, setTasks }}>
+        <UserContext.Provider value={{ user, setUser }}>
+          <TasksModeContext.Provider value={{ tasksMode, setTasksMode }}>
+
+            <DateComponent />
+
             { tasksMode === "daily" ? <DailyTasks tasks={tasks}/> : < MontlyTasks/> }
 
           </TasksModeContext.Provider>
-
-
-
         </UserContext.Provider>
-
       </TasksContext.Provider>
 
       <Footer />
