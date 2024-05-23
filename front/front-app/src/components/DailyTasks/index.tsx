@@ -4,7 +4,6 @@ import { TaskForm } from "../TaskForm";
 import { SearchBar } from "../SearchBar";
 import { Task } from "../Task";
 import { TaskType } from "../../types/Task";
-import { useState, useEffect } from "react";
 
 
 interface DailyTasksType {
@@ -19,24 +18,16 @@ const showTasks = (tasks: TaskType[]) => (
   </TasksBoardStyle>
 )
 
+
 export function DailyTasks({ tasks } : DailyTasksType) {
-
-  const [searchString, setSearchString] = useState("");
-  const [filteredTasks, setFilteredTasks] = useState<TaskType[]>(tasks);
-
-  const filterTasks = () => {setFilteredTasks(tasks.filter((task) => task.title.includes(searchString)))};
-
-  useEffect(() => {
-    filterTasks();
-  }, [searchString]);
 
   return (
     <>
       <DailyTasksContainerStyle>
         <TaskForm />
-        <SearchBar setSearchString={setSearchString} searchString={searchString}/>
+        <SearchBar/>
         {
-          tasks.length !== 0 ? showTasks(searchString ? filteredTasks : tasks) : <h1>Parece não haver tarefas no momento.</h1>
+          tasks.length !== 0 ? showTasks(tasks) : <h1>Parece não haver tarefas no momento.</h1>
         }
       </DailyTasksContainerStyle>
     </>

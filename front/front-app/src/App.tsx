@@ -11,7 +11,7 @@ import { getTasks, getUser } from "./utils/api";
 import { DateComponent } from "./components/Date";
 
 interface TasksContextType {
-  tasks?: TaskType[],
+  tasks: TaskType[],
   setTasks: React.Dispatch<SetStateAction<TaskType[]>>
 }
 
@@ -25,7 +25,7 @@ interface UserContextType {
   setUser: React.Dispatch<SetStateAction<string>>
 }
 
-export const TasksContext = createContext< TasksContextType >({ setTasks: () => {} });
+export const TasksContext = createContext< TasksContextType >({ tasks: [], setTasks: () => {} });
 export const TasksModeContext = createContext< TasksModeContextType >({ setTasksMode: () => {} });
 export const UserContext = createContext< UserContextType >({ setUser: () => {} });
 
@@ -35,12 +35,11 @@ export function App() {
   const [tasks, setTasks] = useState<TaskType[]>([]);
   const [tasksMode, setTasksMode] = useState("daily");
 
-  if (!user) {
+  if (!user)
     getUser(setUser);
-  }
 
-
-  getTasks(user, setTasks);
+  if(tasks.length === 0)
+    getTasks(user, setTasks);
 
 
   return (

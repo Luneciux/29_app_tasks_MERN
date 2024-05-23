@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { TaskType } from "../../types/Task";
 import { api } from "../../utils/api";
+import { TasksContext, UserContext } from "../../App";
 
 import {
   TaskFormContainerStyle,
@@ -24,8 +25,23 @@ export function TaskForm() {
   const handleTitle = (e: React.ChangeEvent<HTMLTextAreaElement>) => setTitle(e.target.value) ;
   const handleDescription = (e: React.ChangeEvent<HTMLTextAreaElement>) => setDescription(e.target.value);
 
+  const { user } = useContext(UserContext);
+  const { tasks, setTasks } = useContext(TasksContext);
+
+  const newTask: TaskType = {
+    title,
+    description,
+    date: "",
+    timeSpanHours: "",
+    tags: [],
+    userId: ""
+  };
+
 
   async function handleCreation () {
+
+    if(!user)
+      return null;
 
     let timeBreaker = [];
 
@@ -37,23 +53,20 @@ export function TaskForm() {
     timeBreaker = finishHour.split(":");
     timeSpanHours.setHours(parseInt(timeBreaker[0]), parseInt(timeBreaker[1]));
 
-    // const {
-    //   user,
-    //   setUser
-    // } = useContext(UserContext);
+    newTask.userId = user;
+    newTask.date = date.toISOString();
+    newTask.timeSpanHours = timeSpanHours.toISOString();
 
-    const newTask: TaskType = {
-      title,
-      description,
-      date: date.toISOString(),
-      timeSpanHours: timeSpanHours.toISOString(),
-      tags: [],
-      userId: ""
-    };
-
-    console.log(newTask);
-
-    await api.post("/tasks", newTask).catch(e => console.log(e));
+    await api.post("/tasks", newTask)
+             .then(() => {
+              setStartHour("00:00");
+              setFinishHour("00:00");
+              setTitle("");
+              setDescription("");
+              tasks.push(newTask);
+              setTasks(tasks);
+             })
+             .catch(e => console.log(e));
   }
 
   return (
