@@ -14,6 +14,8 @@ export function App() {
   const [tasks, setTasks] = useState<TaskType[]>([]);
   const user = "664e61997980052448116ec7";
 
+  //context -> hook -> acessar dados -> (task, setTask, fazerReq)
+
   useEffect(() => {
     api.get('/tasks')
       .then(({data}) => {
