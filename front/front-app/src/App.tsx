@@ -12,6 +12,7 @@ export function App() {
   const test = true;
 
   const [tasks, setTasks] = useState<TaskType[]>([]);
+  const user = "664e61997980052448116ec7";
 
   useEffect(() => {
     api.get('/tasks')
@@ -24,7 +25,7 @@ export function App() {
     <>
       <GlobalStyles />
       <Header />
-      { test ? <DailyTasks tasks={tasks}/> : < MontlyTasks/> }
+      { test ? <DailyTasks tasks={tasks} user={user}/> : < MontlyTasks/> }
       <Footer />
     </>
   );

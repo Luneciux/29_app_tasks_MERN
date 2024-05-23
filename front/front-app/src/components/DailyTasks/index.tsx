@@ -9,18 +9,19 @@ import { useState, useEffect } from "react";
 
 
 interface DailyTasksType {
-  tasks: TaskType[];
+  tasks: TaskType[],
+  user: string,
 }
 
 const showTasks = (tasks: TaskType[]) => (
   <TasksBoardStyle>
     {tasks.map((task) => (
-      <Task {...task} key={task._id}/>
+      <Task {...task} key={task._id} />
     ))}
   </TasksBoardStyle>
 )
 
-export function DailyTasks({ tasks } : DailyTasksType) {
+export function DailyTasks({ tasks, user } : DailyTasksType) {
 
   const [searchString, setSearchString] = useState("");
   const [filteredTasks, setFilteredTasks] = useState<TaskType[]>(tasks);
@@ -34,7 +35,7 @@ export function DailyTasks({ tasks } : DailyTasksType) {
     <>
       <DailyTasksContainerStyle>
         <DateComponent />
-        <TaskForm />
+        <TaskForm user={user} />
         <SearchBar setSearchString={setSearchString} searchString={searchString}/>
         {
           tasks.length !== 0 ? showTasks(searchString ? filteredTasks : tasks) : <h1>Parece não haver tarefas no momento.</h1>

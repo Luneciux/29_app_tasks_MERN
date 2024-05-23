@@ -108,11 +108,17 @@ export const TaskFormActionsStyle = styled.div`
     color: #333333;
     background: #4d4d4d1f;
     padding: 8px;
+    border: none;
+    font-weight: 500;
   }
 
   .create:hover{
     background: #4d4d4d31;
     transition: 0.2s;
+  }
+
+  .create::after{
+    border: none;
   }
 `;
 
