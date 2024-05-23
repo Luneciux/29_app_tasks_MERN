@@ -8,15 +8,21 @@ export const api = axios.create({
 });
 
 export async function getTasks (user: string, setList: React.Dispatch<SetStateAction<TaskType[]>>){
-  await api.get(`/user/${user}/tasks`)
+
+  if(!user)
+    return null;
+
+  await api.get(`/users/${user}/tasks`)
       .then(({data}) => {
         setList(data);
       }).catch(() => []);
+
 }
 
 export async function getUser (setUser: React.Dispatch<SetStateAction<string>>){
   await api.get(`/users`)
       .then(({data}) => {
-        setUser(data[0]);
+        const { _id } = data[0];
+        setUser(_id);
       }).catch(() => []);
 }
