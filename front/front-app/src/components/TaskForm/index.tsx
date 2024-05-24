@@ -1,8 +1,3 @@
-import { useContext, useState } from "react";
-import { TaskType } from "../../types/Task";
-import { Api, CreateTask } from "../../utils/Api";
-import { TasksContext, UserContext } from "../../App";
-
 import {
   TaskFormContainerStyle,
   TaskFormHeaderContainerStyle,
@@ -13,20 +8,27 @@ import {
 } from "./styles";
 
 
+import { TaskType } from "../../types/Task";
+import { CreateTask } from "../../utils/Api";
+import { useContext, useState } from "react";
+import { TasksContext, UserContext } from "../../App";
+
+
 export function TaskForm() {
 
-  const [startHour, setStartHour] = useState<string>("00:00");
   const [finishHour, setFinishHour] = useState<string>("00:00");
-  const [title, setTitle] = useState<string>("");
+  const [startHour, setStartHour] = useState<string>("00:00");
   const [description, setDescription] = useState<string>("");
+  const [title, setTitle] = useState<string>("");
 
-  const handleStartHours = (e: React.ChangeEvent<HTMLInputElement>) => setStartHour(e.target.value) ;
-  const handleFinishHours = (e: React.ChangeEvent<HTMLInputElement>) => setFinishHour(e.target.value);
-  const handleTitle = (e: React.ChangeEvent<HTMLTextAreaElement>) => setTitle(e.target.value) ;
   const handleDescription = (e: React.ChangeEvent<HTMLTextAreaElement>) => setDescription(e.target.value);
+  const handleFinishHours = (e: React.ChangeEvent<HTMLInputElement>) => setFinishHour(e.target.value);
+  const handleStartHours = (e: React.ChangeEvent<HTMLInputElement>) => setStartHour(e.target.value) ;
+  const handleTitle = (e: React.ChangeEvent<HTMLTextAreaElement>) => setTitle(e.target.value) ;
 
   const { user } = useContext(UserContext);
   const { tasks, setTasks } = useContext(TasksContext);
+
 
   const newTask: TaskType = {
     title,
@@ -35,42 +37,48 @@ export function TaskForm() {
     timeSpanHours: "",
     tags: [],
     userId: ""
-  };
+  }
 
+
+  function formatDate (hour: string) {
+    const dateHelper = new Date(Date.now());
+    let timeBreaker = [];
+
+    timeBreaker = hour.split(":");
+    dateHelper.setHours(parseInt(timeBreaker[0]), parseInt(timeBreaker[1]));
+
+    return dateHelper.toISOString();
+  }
+
+  function addTaskAndUpdate (task: TaskType) {
+
+    if(task.title === "")
+      return null;
+
+    setStartHour("00:00");
+    setFinishHour("00:00");
+    setTitle("");
+    setDescription("");
+
+    const newTasks = tasks;
+
+    newTasks.push(task);
+
+    console.log(tasks);
+    setTasks(newTasks);
+
+
+  }
 
   async function handleCreation () {
-
     if(!user)
       return null;
 
-    let timeBreaker = [];
-
-    const date = new Date(Date.now());
-    timeBreaker = startHour.split(":");
-    date.setHours(parseInt(timeBreaker[0]), parseInt(timeBreaker[1]));
-
-    const timeSpanHours = new Date(Date.now());
-    timeBreaker = finishHour.split(":");
-    timeSpanHours.setHours(parseInt(timeBreaker[0]), parseInt(timeBreaker[1]));
-
     newTask.userId = user;
-    newTask.date = date.toISOString();
-    newTask.timeSpanHours = timeSpanHours.toISOString();
+    newTask.date = formatDate(startHour);
+    newTask.timeSpanHours = formatDate(finishHour);
 
-    await Api.post("/tasks", newTask)
-              .then(() => {
-                setStartHour("00:00");
-                setFinishHour("00:00");
-                setTitle("");
-                setDescription("");
-              })
-              .then(() => {
-                const newTasks = tasks;
-                newTasks.push(newTask);
-                setTasks(newTasks);
-                console.log(newTasks);
-              })
-              .catch(e => console.log(e));
+    await CreateTask(newTask).then(addTaskAndUpdate(newTask)).catch(e => console.log(e));
   }
 
   return (
@@ -86,6 +94,7 @@ export function TaskForm() {
             rows={3}
             value={title}
             onChange={handleTitle}
+            required={true}
           />
 
           <input
@@ -131,6 +140,7 @@ export function TaskForm() {
           placeholder="Escreva algo relacionado a task"
           value={description}
           onChange={handleDescription}
+          required={true}
         />
 
       </TaskFormDescriptionStyle>

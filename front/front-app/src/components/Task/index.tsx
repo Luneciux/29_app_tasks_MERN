@@ -28,8 +28,8 @@ export function Task(task : TaskType) {
     return null;
   }
 
-  function handleDelete () {
-    DeleteTask(_id).then(deleteTaskAndUpdateList()).catch(e => console.log(e));
+  async function handleDelete () {
+    await DeleteTask(_id).then(deleteTaskAndUpdateList()).catch(e => console.log(e));
   }
 
   const formatedDate = new Date(task.date);

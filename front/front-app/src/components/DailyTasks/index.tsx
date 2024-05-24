@@ -18,8 +18,8 @@ export const SearchStringContext = createContext< SearchStringContextType >({ se
 
 const showTasks = (tasks: TaskType[]) => (
   <TasksBoardStyle>
-    {tasks.map((task) => (
-      <Task {...task} key={task._id} />
+    {tasks.map((task, i) => (
+      <Task {...task} key={i} />
     ))}
   </TasksBoardStyle>
 );
