@@ -58,15 +58,21 @@ export function TaskForm() {
     newTask.timeSpanHours = timeSpanHours.toISOString();
 
     await api.post("/tasks", newTask)
-             .then(() => {
-              setStartHour("00:00");
-              setFinishHour("00:00");
-              setTitle("");
-              setDescription("");
-              tasks.push(newTask);
-              setTasks(tasks);
-             })
-             .catch(e => console.log(e));
+              .then(() => {
+                setStartHour("00:00");
+                setFinishHour("00:00");
+                setTitle("");
+                setDescription("");
+              })
+              .then(() => {
+                tasks.push(newTask);
+                console.log(tasks);
+                setTasks(tasks);
+              })
+              .catch(e => console.log(e));
+
+    // tasks.push(newTask);
+    // setTasks(tasks);
   }
 
   return (

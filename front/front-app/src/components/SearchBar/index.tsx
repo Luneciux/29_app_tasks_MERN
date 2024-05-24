@@ -1,13 +1,14 @@
-import { useContext } from "react";
+import { SetStateAction } from "react";
 import { SearchBarStyle } from "./styles";
-import { TasksContext } from "../../App";
 
-export function SearchBar() {
+interface SearchBarTypes {
+  setSearchString: React.Dispatch<SetStateAction<string>>
+}
 
-  const { tasks, setTasks } = useContext(TasksContext);
+export function SearchBar({ setSearchString }: SearchBarTypes) {
 
   function filterTasks (searchString: string) {
-    setTasks(tasks.filter((task) => task.title.includes(searchString)));
+      setSearchString(searchString);
   }
 
   return (
@@ -16,11 +17,7 @@ export function SearchBar() {
         search
       </span>
       {/* <span>Procura Tag por Nome</span> */}
-      <input type="text" className="text-input" placeholder="Procurar Task por Nome" onChange={e => {
-        e.preventDefault();
-
-        filterTasks(e.target.value)
-      }}/>
+      <input type="text" className="text-input" placeholder="Procurar Task por Nome" onChange={e => { filterTasks(e.target.value) }}/>
     </SearchBarStyle>
   );
 }
