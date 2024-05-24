@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { TaskType } from "../../types/Task";
-import { api } from "../../utils/api";
+import { Api, CreateTask } from "../../utils/Api";
 import { TasksContext, UserContext } from "../../App";
 
 import {
@@ -57,7 +57,7 @@ export function TaskForm() {
     newTask.date = date.toISOString();
     newTask.timeSpanHours = timeSpanHours.toISOString();
 
-    await api.post("/tasks", newTask)
+    await Api.post("/tasks", newTask)
               .then(() => {
                 setStartHour("00:00");
                 setFinishHour("00:00");
@@ -65,14 +65,12 @@ export function TaskForm() {
                 setDescription("");
               })
               .then(() => {
-                tasks.push(newTask);
-                console.log(tasks);
-                setTasks(tasks);
+                const newTasks = tasks;
+                newTasks.push(newTask);
+                setTasks(newTasks);
+                console.log(newTasks);
               })
               .catch(e => console.log(e));
-
-    // tasks.push(newTask);
-    // setTasks(tasks);
   }
 
   return (

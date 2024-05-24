@@ -7,7 +7,7 @@ import { MontlyTasks } from "./components/MontlyTasks";
 import { Footer } from "./components/Footer";
 import { TaskType } from "./types/Task";
 
-import { getTasks, getUser } from "./utils/api";
+import { GetTasks, GetUser } from "./utils/Api";
 import { DateComponent } from "./components/Date";
 
 interface TasksContextType {
@@ -36,10 +36,10 @@ export function App() {
   const [tasksMode, setTasksMode] = useState("daily");
 
   if (!user)
-    getUser(setUser);
+    GetUser(setUser);
 
   if(tasks.length === 0)
-    getTasks(user, setTasks);
+    GetTasks(user, setTasks);
 
 
   return (
@@ -52,7 +52,7 @@ export function App() {
 
             <DateComponent />
 
-            { tasksMode === "daily" ? <DailyTasks/> : < MontlyTasks/> }
+            { tasksMode === "daily" ? <DailyTasks tasks={tasks}/> : < MontlyTasks/> }
 
           </TasksModeContext.Provider>
         </UserContext.Provider>

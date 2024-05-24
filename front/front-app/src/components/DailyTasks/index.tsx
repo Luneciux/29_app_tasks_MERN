@@ -3,8 +3,18 @@ import { TaskForm } from "../TaskForm";
 import { SearchBar } from "../SearchBar";
 import { Task } from "../Task";
 import { TaskType } from "../../types/Task";
-import { SetStateAction, createContext, useContext, useEffect, useState } from "react";
-import { TasksContext } from "../../App";
+import { SetStateAction, createContext, useEffect, useState } from "react";
+
+
+interface SearchStringContextType {
+  setSearchString: React.Dispatch<SetStateAction<string>>
+}
+
+interface DailyTasksTypes {
+  tasks: TaskType[];
+}
+
+export const SearchStringContext = createContext< SearchStringContextType >({ setSearchString: () => {} });
 
 const showTasks = (tasks: TaskType[]) => (
   <TasksBoardStyle>
@@ -14,23 +24,16 @@ const showTasks = (tasks: TaskType[]) => (
   </TasksBoardStyle>
 );
 
-interface SearchStringContextType {
-  searchString: string,
-  setSearchString: React.Dispatch<SetStateAction<string>>
-}
+export function DailyTasks({ tasks } :  DailyTasksTypes) {
 
-export const SearchStringContext = createContext< SearchStringContextType >({ searchString: "", setSearchString: () => {} });
+  //const { tasks } = useContext(TasksContext);
 
-
-export function DailyTasks() {
-
-  const { tasks } = useContext(TasksContext);
   const [ filteredTasks, setFilteredTasks ] = useState<TaskType[]>([]);
   const [ searchString, setSearchString ] = useState("");
 
   useEffect(() => {
     setFilteredTasks(tasks.filter((task) => task.title.includes(searchString)))
-  }, [searchString, tasks, filteredTasks.length]);
+  }, [searchString]);
 
 
   return (
