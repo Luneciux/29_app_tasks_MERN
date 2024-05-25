@@ -7,6 +7,10 @@ export async function deleteTask(req: Request, res: Response) {
   try {
 
     const { taskId } = req.params;
+
+    if (!taskId)
+      throw new Error("task não encontrada");
+
     await Task.findByIdAndDelete( taskId );
     res.status(204);
 

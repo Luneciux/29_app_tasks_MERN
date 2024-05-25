@@ -24,67 +24,25 @@ import { deleteTag } from "./app/controllers/tags/deleteTag";
 export const router = Router();
 
 //USER
-
-//GET USERS
 router.get("/users", getUsers);
-
-//GET USER BY ID
 router.get("/users/:userId", getUserById);
-
-//CREATE USER
 router.post("/users", createUser);
-
-//UPDATE USER
 router.patch("/users/:userId", changeUser);
-
-//DELETE USER
 router.delete("/users/:userId", deleteUser);
 
-
-
 //TASK
-
-//GET TASKS
 router.get("/tasks", getTasks);
-
-//GET TASK BY ID
 router.get("/tasks/:taskId", getTaskById);
-
-//GET TASKS BY USER
 router.get("/users/:userId/tasks", getTasksByUser);
-
-//GET TASKS BY NAME
-//ESSA FUNCIONALIDADE SERÁ TRATADA PELO CLIENTE
-
-
-//CREATE TASK
 router.post("/tasks", createTask);
-
-//UPDATE TASK
 router.patch("/tasks/:taskId", changeTask);
-
-//DELETE TASK
 router.delete("/tasks/:taskId", deleteTask);
 
-
-
 //TAG
-
-//GET TAGS
 router.get("/tags", getTags);
-
-//GET TAG BY ID
 router.get("/tags/:tagId", getTagById);
-
-//GET TAG BY USER ID
 router.get("/users/:userId/tags", getTagsByUser);
-
-//CREATE TAG
 router.post("/tags", createTag);
-
-//UPDATE TAG
 router.patch("/tags/:tagId", changeTag);
-
-//DELETE TAG
 router.delete("/tags/:tagId", deleteTag);
 

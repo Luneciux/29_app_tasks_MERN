@@ -17,7 +17,7 @@ export const Task = model("Task", new Schema( {
   },
 
   timeSpanHours:  {
-    type: Number,
+    type: Date,
     required: true,
   },
 
