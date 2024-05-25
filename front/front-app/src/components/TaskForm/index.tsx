@@ -27,7 +27,7 @@ export function TaskForm() {
   const handleTitle = (e: React.ChangeEvent<HTMLTextAreaElement>) => setTitle(e.target.value) ;
 
   const { user } = useContext(UserContext);
-  const { tasks, setTasks } = useContext(TasksContext);
+  const { setTasks } = useContext(TasksContext);
 
 
   const newTask: TaskType = {
@@ -50,24 +50,15 @@ export function TaskForm() {
     return dateHelper.toISOString();
   }
 
-  function addTaskAndUpdate (task: TaskType) {
-
-    if(task.title === "")
+  function addTaskAndUpdate (taskT: TaskType) {
+    if(taskT.title === "")
       return null;
 
     setStartHour("00:00");
     setFinishHour("00:00");
-    setTitle("");
     setDescription("");
-
-    const newTasks = tasks;
-
-    newTasks.push(task);
-
-    console.log(tasks);
-    setTasks(newTasks);
-
-
+    setTitle("");
+    setTasks(prevTasks => [...prevTasks, taskT ]);
   }
 
   async function handleCreation () {
