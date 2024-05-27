@@ -19,13 +19,16 @@ import { TasksContext } from "../../App";
 
 export function Task(task : TaskType) {
 
-  const { tasks, setTasks } = useContext(TasksContext);
+  const { setTasks } = useContext(TasksContext);
   const { _id } = task;
 
   function deleteTaskAndUpdateList () {
-    const newTasks = tasks.filter((e) => e._id !== _id);
-    setTasks(newTasks);
+    console.log(_id);
+
+    setTasks(prevTasks => prevTasks.filter((e) => e._id !== _id));
     return null;
+
+
   }
 
   async function handleDelete () {

@@ -36,7 +36,7 @@ export function TaskForm() {
     date: "",
     timeSpanHours: "",
     tags: [],
-    userId: ""
+    userId: "",
   }
 
 
@@ -50,15 +50,11 @@ export function TaskForm() {
     return dateHelper.toISOString();
   }
 
-  function addTaskAndUpdate (taskT: TaskType) {
-    if(taskT.title === "")
-      return null;
-
+  function clearForm () {
     setStartHour("00:00");
     setFinishHour("00:00");
     setDescription("");
     setTitle("");
-    setTasks(prevTasks => [...prevTasks, taskT ]);
   }
 
   async function handleCreation () {
@@ -69,7 +65,8 @@ export function TaskForm() {
     newTask.date = formatDate(startHour);
     newTask.timeSpanHours = formatDate(finishHour);
 
-    await CreateTask(newTask).then(addTaskAndUpdate(newTask)).catch(e => console.log(e));
+    //await CreateTask(newTask).then(() => addTaskAndUpdate(newTask), () => null).catch(e => console.log(e));
+    await CreateTask(newTask, setTasks).then(() => clearForm(), () => null).catch(e => console.log(e));
   }
 
   return (

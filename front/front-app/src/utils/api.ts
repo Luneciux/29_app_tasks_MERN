@@ -12,12 +12,11 @@ export async function GetTasks (user: string, setList: React.Dispatch<SetStateAc
     return null;
 
   await Api.get(`/users/${user}/tasks`)
-      .then(({data}) => {
-        setList(data);
-      }).catch((e) => console.log(e));
+           .then(({ data }) => {
+             setList(data);
+           }).catch((e) => console.log(e));
 
 }
-
 
 export async function GetUser (setUser: React.Dispatch<SetStateAction<string>>){
   await Api.get(`/users`)
@@ -35,11 +34,15 @@ export async function DeleteTask (_id?: string){
 
 }
 
-export async function CreateTask (task: TaskType){
+export async function CreateTask (task: TaskType, setTasks: React.Dispatch<SetStateAction<TaskType[]>>){
   if(!task)
     return null;
 
-  await Api.post("/tasks", task).catch(e => console.log(e));
+  await Api.post("/tasks", task).then(({ data }) => {
+    setTasks(prevTasks => [ ...prevTasks, data ]);
+  }).catch(e => console.log(e));
+
+
 }
 
 
