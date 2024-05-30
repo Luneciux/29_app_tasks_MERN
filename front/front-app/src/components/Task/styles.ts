@@ -1,10 +1,21 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-export const TaskContainerStyle = styled.div`
+const easeIn = keyframes`
+  from {opacity: 0;}
+  to {opacity: 1;}
+`;
+
+const easeOut = keyframes`
+  from {opacity: 1;}
+  to {opacity: 0;}
+`;
+
+export const TaskContainerStyle = styled.div<{ $action?: boolean; }>`
   background: #f8f8f8;
   margin-bottom: 32px;
   padding: 18px;
   border-radius: 4px;
+  animation: ${ props => props.$action ? easeIn : easeOut } 0.2s linear normal;
 `;
 
 export const TaskHeaderStyle = styled.div`

@@ -42,6 +42,18 @@ export async function CreateTask (task: TaskType, setTasks: React.Dispatch<SetSt
     setTasks(prevTasks => [ ...prevTasks, data ]);
   }).catch(e => console.log(e));
 
+}
+
+export async function EditTask (task: TaskType, setTasks: React.Dispatch<SetStateAction<TaskType[]>>, index: number){
+  if(!task)
+    return null;
+
+  await Api.patch(`/tasks/${task._id}`, task).then(() => {
+    setTasks(prevTasks   => {
+      prevTasks[index] = task
+      return prevTasks;
+    });
+  }).catch(e => console.log(e));
 
 }
 
