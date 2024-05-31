@@ -9,17 +9,24 @@ import {
 
 
 import { TaskType } from "../../types/Task";
-import { CreateTask } from "../../utils/Api";
-import { useContext, useState } from "react";
+import React, { SetStateAction, useContext, useEffect, useState } from "react";
 import { TasksContext, UserContext } from "../../App";
+import { FormatTime } from "../../utils/Date";
+import { CreateTask, EditTask } from "../../utils/Api";
+
+interface TaskFormType {
+  editedTask: TaskType | undefined,
+  setEditedTask: React.Dispatch<SetStateAction<TaskType | undefined>>
+}
 
 
-export function TaskForm() {
+export function TaskForm({ editedTask, setEditedTask } : TaskFormType) {
 
   const [finishHour, setFinishHour] = useState<string>("00:00");
   const [startHour, setStartHour] = useState<string>("00:00");
   const [description, setDescription] = useState<string>("");
   const [title, setTitle] = useState<string>("");
+  const [edit, setEdit] = useState(false);
 
   const handleDescription = (e: React.ChangeEvent<HTMLTextAreaElement>) => setDescription(e.target.value);
   const handleFinishHours = (e: React.ChangeEvent<HTMLInputElement>) => setFinishHour(e.target.value);
@@ -27,7 +34,7 @@ export function TaskForm() {
   const handleTitle = (e: React.ChangeEvent<HTMLTextAreaElement>) => setTitle(e.target.value) ;
 
   const { user } = useContext(UserContext);
-  const { setTasks } = useContext(TasksContext);
+  const { tasks, setTasks } = useContext(TasksContext);
 
 
   const newTask: TaskType = {
@@ -36,8 +43,19 @@ export function TaskForm() {
     date: "",
     timeSpanHours: "",
     tags: [],
-    userId: ""
+    userId: "",
   }
+
+  useEffect(() => {
+    if(editedTask !== undefined){
+      setEdit(true);
+      setTitle(editedTask.title);
+      setDescription(editedTask.description);
+      setStartHour(FormatTime(new Date(editedTask.date)));
+      setFinishHour(FormatTime(new Date(editedTask.timeSpanHours)));
+    }
+
+  },[editedTask]);
 
 
   function formatDate (hour: string) {
@@ -50,15 +68,23 @@ export function TaskForm() {
     return dateHelper.toISOString();
   }
 
-  function addTaskAndUpdate (taskT: TaskType) {
-    if(taskT.title === "")
-      return null;
-
+  function clearForm () {
     setStartHour("00:00");
     setFinishHour("00:00");
     setDescription("");
     setTitle("");
-    setTasks(prevTasks => [...prevTasks, taskT ]);
+    setEdit(false);
+    setEditedTask(undefined);
+  }
+
+  function clearEditionAndUpdate () {
+    if(editedTask){
+      clearForm();
+      setTasks((prevTasks) => {
+        prevTasks[tasks.indexOf(editedTask)] = editedTask;
+        return prevTasks;
+      });
+    }
   }
 
   async function handleCreation () {
@@ -69,7 +95,20 @@ export function TaskForm() {
     newTask.date = formatDate(startHour);
     newTask.timeSpanHours = formatDate(finishHour);
 
-    await CreateTask(newTask).then(addTaskAndUpdate(newTask)).catch(e => console.log(e));
+    await CreateTask(newTask, setTasks).then(() => clearForm(), () => null).catch(e => console.log(e));
+  }
+
+  async function handleEdit () {
+    if(!editedTask)
+      return null;
+
+    editedTask.title = title;
+    editedTask.description = description;
+    editedTask.date = formatDate(startHour);
+    editedTask.timeSpanHours = formatDate(finishHour);
+
+    await EditTask(editedTask).then(() => clearEditionAndUpdate(), () => null).catch(e => console.log(e));
+
   }
 
   return (
@@ -114,9 +153,9 @@ export function TaskForm() {
 
             <button
               className="create"
-              onClick={handleCreation}
+              onClick={ !edit ?  handleCreation : handleEdit}
             >
-              Criar
+              { !edit ?  "Criar" : "Salvar"}
             </button>
 
           </ActionStyle>

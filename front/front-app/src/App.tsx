@@ -33,7 +33,7 @@ export function App() {
 
   const [user, setUser] = useState("");
   const [tasks, setTasks] = useState<TaskType[]>([]);
-  const [tasksMode, setTasksMode] = useState("daily");
+  const [tasksMode, setTasksMode] = useState("dia");
 
   if (!user)
     GetUser(setUser);
@@ -52,7 +52,7 @@ export function App() {
 
             <DateComponent />
 
-            { tasksMode === "daily" ? <DailyTasks tasks={tasks}/> : < MontlyTasks/> }
+            { tasksMode === "dia" ? <DailyTasks/> : < MontlyTasks/> }
 
           </TasksModeContext.Provider>
         </UserContext.Provider>

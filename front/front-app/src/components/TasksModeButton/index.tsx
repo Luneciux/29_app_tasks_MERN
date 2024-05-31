@@ -13,7 +13,7 @@ export function TasksModeButton() {
   const { tasksMode, setTasksMode } = useContext(TasksModeContext);
 
   function handleTasksModeChange () {
-    tasksMode === "daily" ? setTasksMode("montly") : setTasksMode("daily");
+    tasksMode === "dia" ? setTasksMode("mês") : setTasksMode("dia");
   }
 
   return (

@@ -7,24 +7,36 @@ import {
   TaskTagsStyle,
   ActionStyle,
   TaskTitleStyle,
-  TaskTimeSpanStyle
+  TaskTimeSpanStyle,
+  TaskTagsEdition
 } from "./styles";
 
 import { Tag } from "../Tag";
 import { TagForm } from "../TagForm";
 import { TaskType } from "../../types/Task";
 import { DeleteTask } from "../../utils/Api";
-import { useContext } from "react";
+import { SetStateAction, useContext, useEffect, useState } from "react";
 import { TasksContext } from "../../App";
+import { FormatTime } from "../../utils/Date";
 
-export function Task(task : TaskType) {
+interface TaskComponentType {
+  task: TaskType,
+  setEditedTask: React.Dispatch<SetStateAction<TaskType | undefined>>,
+  editedTask: TaskType | undefined
+}
 
-  const { tasks, setTasks } = useContext(TasksContext);
+export function Task( { task, setEditedTask, editedTask } : TaskComponentType) {
+
+  const { setTasks } = useContext(TasksContext);
   const { _id } = task;
+  const [ edit, setEdit ] = useState(false);
+  const [ tags, setTags ] = useState(task.tags);
+
+  const formatedDate = new Date(task.date);
+  const timeSpan = new Date(task.timeSpanHours);
 
   function deleteTaskAndUpdateList () {
-    const newTasks = tasks.filter((e) => e._id !== _id);
-    setTasks(newTasks);
+    setTasks(prevTasks => prevTasks.filter((e) => e._id !== _id));
     return null;
   }
 
@@ -32,37 +44,40 @@ export function Task(task : TaskType) {
     await DeleteTask(_id).then(deleteTaskAndUpdateList()).catch(e => console.log(e));
   }
 
-  const formatedDate = new Date(task.date);
-  const timeSpan = new Date(task.timeSpanHours);
-
-  function startTime () {
-    return `${ formatedDate.getHours()  < 10 ? '0' : '' }${ formatedDate.getHours()}:${ (formatedDate.getMinutes() < 10 ? '0' : '') }${ formatedDate.getMinutes() }h `;
+  async function handleEdit () {
+    setEditedTask(task);
+    setEdit(true);
+    return null;
   }
 
-  function finishTime () {
-    timeSpan.setHours(timeSpan.getHours());
-    return `${ timeSpan.getHours()  < 10 ? '0' : '' }${ timeSpan.getHours()}:${ (timeSpan.getMinutes() < 10 ? '0' : '') }${ timeSpan.getMinutes() }h `;
-  }
+  useEffect(() => {
+    if(task !== editedTask)
+      setEdit(false);
+
+    if(editedTask === undefined)
+      setEdit(false);
+  }, [editedTask]);
 
   return (
-
-    <TaskContainerStyle>
+    <TaskContainerStyle $action={true}>
 
       <TaskHeaderContainerStyle>
 
         <TaskHeaderStyle>
           <TaskTitleStyle><h2>{`${task.title}`}</h2></TaskTitleStyle>
-          <TaskTimeSpanStyle><h2>{`${startTime()} - ${finishTime()}`}</h2></TaskTimeSpanStyle>
+          <TaskTimeSpanStyle><h2>{`${FormatTime(formatedDate)}h - ${FormatTime(timeSpan)}h`}</h2></TaskTimeSpanStyle>
         </TaskHeaderStyle>
 
         <TaskActionsStyle>
           <ActionStyle>
-            <p className="edit">Editar</p>
+            <button className="edit" onClick={ handleEdit } >
+              Editar
+            </button>
           </ActionStyle>
           <ActionStyle>
-            <p className="delete" onClick={ handleDelete } >
+            <button className="delete" onClick={ handleDelete } disabled={edit}>
               Deletar
-            </p>
+            </button>
           </ActionStyle>
         </TaskActionsStyle>
 
@@ -72,13 +87,22 @@ export function Task(task : TaskType) {
         <p>{`${task.description}`}</p>
       </TaskDescriptionStyle>
 
-      <TaskTagsStyle>
-        {task.tags.map((tag) => (
-          <Tag title={`${tag.title}`} key={tag._id} _id={tag._id}/>
-        ))}
-        <TagForm />
-      </TaskTagsStyle>
+      {
+        !edit ?
+          <TaskTagsStyle>
+            {tags.map((tag, i) => (
+              <Tag tag={tag} setTags={setTags} key={i} />
+            ))}
+            <TagForm task={task} setTags={setTags}/>
+          </TaskTagsStyle>
+        :
+          <TaskTagsEdition>
+            <p>editando</p><div className="loader"/>
+          </TaskTagsEdition>
+      }
 
     </TaskContainerStyle>
   );
 }
+
+

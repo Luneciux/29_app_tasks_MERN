@@ -8,8 +8,7 @@ export async function changeTask(req: Request, res: Response) {
     const { taskId } = req.params;
     const update = { ...req.body };
     await Task.findByIdAndUpdate( taskId,  update );
-    res.status(204);
-
+    res.sendStatus(201);
 
   } catch (e) {
     console.log(e);
