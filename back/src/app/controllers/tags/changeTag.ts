@@ -8,7 +8,7 @@ export async function changeTag(req: Request, res: Response) {
     const { tagId } = req.params;
     const update = { ...req.body };
     await Tag.findByIdAndUpdate( tagId,  update );
-    res.status(204);
+    res.sendStatus(204);
 
 
   } catch (e) {

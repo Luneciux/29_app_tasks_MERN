@@ -8,7 +8,7 @@ export async function changeUser(req: Request, res: Response) {
     const { userId } = req.params;
     const update = {...req.body};
     await User.findByIdAndUpdate( userId,  update );
-    res.status(204);
+    res.sendStatus(204);
 
 
   } catch (e) {
