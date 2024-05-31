@@ -29,6 +29,7 @@ export function Task( { task, setEditedTask, editedTask } : TaskComponentType) {
   const { setTasks } = useContext(TasksContext);
   const { _id } = task;
   const [ edit, setEdit ] = useState(false);
+  const [ tags, setTags ] = useState(task.tags);
 
   const formatedDate = new Date(task.date);
   const timeSpan = new Date(task.timeSpanHours);
@@ -49,6 +50,9 @@ export function Task( { task, setEditedTask, editedTask } : TaskComponentType) {
   }
 
   useEffect(() => {
+    if(task !== editedTask)
+      setEdit(false);
+
     if(editedTask === undefined)
       setEdit(false);
   }, [editedTask]);
@@ -83,10 +87,10 @@ export function Task( { task, setEditedTask, editedTask } : TaskComponentType) {
       </TaskDescriptionStyle>
 
       <TaskTagsStyle>
-        {task.tags.map((tag) => (
-          <Tag title={`${tag.title}`} key={tag._id} _id={tag._id}/>
+        {tags.map((tag, i) => (
+          <Tag tag={tag} setTags={setTags} key={i} />
         ))}
-        <TagForm />
+        <TagForm task={task} setTags={setTags}/>
       </TaskTagsStyle>
 
     </TaskContainerStyle>

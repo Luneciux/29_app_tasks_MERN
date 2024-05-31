@@ -98,6 +98,7 @@ export const TaskActionsStyle = styled.div`
 
   button {
     border: none;
+    font-weight: 600;
   }
 
   button:disabled {
@@ -116,7 +117,6 @@ export const TaskActionsStyle = styled.div`
 
 export const ActionStyle = styled.div`
   display: flex;
-  font-weight: 500;
   gap: 20px;
   cursor: pointer;
 

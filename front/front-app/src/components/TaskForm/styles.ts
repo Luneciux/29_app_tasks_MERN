@@ -100,7 +100,7 @@ export const TaskFormHeaderContainerStyle = styled.div`
 
 export const TaskFormActionsStyle = styled.div`
   display: flex;
-  font-weight: 500;
+  font-weight: 600;
   gap: 20px;
 
   .create{
@@ -109,7 +109,6 @@ export const TaskFormActionsStyle = styled.div`
     background: #4d4d4d1f;
     padding: 8px;
     border: none;
-    font-weight: 500;
   }
 
   .create:hover{
@@ -124,9 +123,13 @@ export const TaskFormActionsStyle = styled.div`
 
 export const ActionStyle = styled.div`
   display: flex;
-  font-weight: 500;
+  font-weight: 600;
   gap: 20px;
   cursor: pointer;
+
+  button {
+    font-weight: 600;
+  }
 
 `;
 

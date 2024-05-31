@@ -77,6 +77,16 @@ export function TaskForm({ editedTask, setEditedTask } : TaskFormType) {
     setEditedTask(undefined);
   }
 
+  function clearEditionAndUpdate () {
+    if(editedTask){
+      clearForm();
+      setTasks((prevTasks) => {
+        prevTasks[tasks.indexOf(editedTask)] = editedTask;
+        return prevTasks;
+      });
+    }
+  }
+
   async function handleCreation () {
     if(!user)
       return null;
@@ -97,7 +107,7 @@ export function TaskForm({ editedTask, setEditedTask } : TaskFormType) {
     editedTask.date = formatDate(startHour);
     editedTask.timeSpanHours = formatDate(finishHour);
 
-    await EditTask(editedTask, setTasks, tasks.indexOf(editedTask)).then(() => clearForm(), () => null).catch(e => console.log(e));
+    await EditTask(editedTask).then(() => clearEditionAndUpdate(), () => null).catch(e => console.log(e));
 
   }
 

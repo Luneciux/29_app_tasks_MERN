@@ -2,18 +2,30 @@ import axios from "axios";
 
 import { TaskType } from "../types/Task";
 import { SetStateAction } from "react";
+import { TagType } from "../types/Tag";
 
 const Api = axios.create({
   baseURL:  'http://localhost:3001'
 });
 
-export async function GetTasks (user: string, setList: React.Dispatch<SetStateAction<TaskType[]>>){
+export async function GetTasks (user: string, setTasks: React.Dispatch<SetStateAction<TaskType[]>>){
   if(!user)
     return null;
 
   await Api.get(`/users/${user}/tasks`)
            .then(({ data }) => {
-             setList(data);
+              setTasks(data);
+           }).catch((e) => console.log(e));
+
+}
+
+export async function GetTasksById (taskId: string){
+  if(!taskId)
+    return null;
+
+  await Api.get(`/tasks/${taskId}`)
+           .then(({ data }) => {
+             return data;
            }).catch((e) => console.log(e));
 
 }
@@ -44,18 +56,36 @@ export async function CreateTask (task: TaskType, setTasks: React.Dispatch<SetSt
 
 }
 
-export async function EditTask (task: TaskType, setTasks: React.Dispatch<SetStateAction<TaskType[]>>, index: number){
+export async function EditTask (task: TaskType){
   if(!task)
     return null;
 
-  await Api.patch(`/tasks/${task._id}`, task).then(() => {
-    setTasks(prevTasks   => {
-      prevTasks[index] = task
-      return prevTasks;
-    });
+  await Api.patch(`/tasks/${task._id}`, task).catch(e => console.log(e));
+
+}
+
+export async function CreateTag (tag: TagType, task: TaskType, setTags: React.Dispatch<SetStateAction<TagType[]>>){
+  if(!tag || tag === undefined || !task)
+    return null;
+
+  await Api.post(`/tags`, tag).then(({ data }) => {
+
+    task.tags.push(data);
+    setTags((prevTags) => [ ...prevTags, data]);
+    EditTask(task).catch(e => console.log(e));
+
   }).catch(e => console.log(e));
 
 }
+
+export async function DeleteTag (_id?: string){
+  if(!_id)
+    return null;
+
+  await Api.delete(`/tags/${_id}`).catch(e => console.log(e));
+
+}
+
 
 
 
