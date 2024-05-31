@@ -52,7 +52,7 @@ export function App() {
 
             <DateComponent />
 
-            { tasksMode === "dia" ? <DailyTasks tasks={tasks}/> : < MontlyTasks/> }
+            { tasksMode === "dia" ? <DailyTasks/> : < MontlyTasks/> }
 
           </TasksModeContext.Provider>
         </UserContext.Provider>

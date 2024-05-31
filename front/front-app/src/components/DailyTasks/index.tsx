@@ -3,16 +3,16 @@ import { TaskForm } from "../TaskForm";
 import { SearchBar } from "../SearchBar";
 import { Task } from "../Task";
 import { TaskType } from "../../types/Task";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { TasksContext } from "../../App";
 
-interface DailyTasksTypes {
-  tasks: TaskType[];
-}
+// interface DailyTasksTypes {
+//   tasks: TaskType[];
+// }
 
-export function DailyTasks({ tasks } :  DailyTasksTypes) {
+export function DailyTasks() {
 
-  //const { tasks } = useContext(TasksContext);
-
+  const { tasks } = useContext(TasksContext);
   const [ filteredTasks, setFilteredTasks ] = useState<TaskType[]>([]);
   const [ searchString, setSearchString ] = useState("");
   const [ editedTask, setEditedTask ] = useState<TaskType>();
