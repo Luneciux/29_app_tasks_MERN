@@ -22,9 +22,9 @@ export function Tag({ tag, setTags } : TagComponentType) {
   }
 
   return (
-    <TagStyle onClick={handleDelete}>
+    <TagStyle>
       <p>{title}</p>
-      <span className="material-symbols-outlined">
+      <span onClick={handleDelete} className="material-symbols-outlined">
         close
       </span>
     </TagStyle>

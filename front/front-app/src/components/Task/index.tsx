@@ -7,7 +7,8 @@ import {
   TaskTagsStyle,
   ActionStyle,
   TaskTitleStyle,
-  TaskTimeSpanStyle
+  TaskTimeSpanStyle,
+  TaskTagsEdition
 } from "./styles";
 
 import { Tag } from "../Tag";
@@ -86,13 +87,22 @@ export function Task( { task, setEditedTask, editedTask } : TaskComponentType) {
         <p>{`${task.description}`}</p>
       </TaskDescriptionStyle>
 
-      <TaskTagsStyle>
-        {tags.map((tag, i) => (
-          <Tag tag={tag} setTags={setTags} key={i} />
-        ))}
-        <TagForm task={task} setTags={setTags}/>
-      </TaskTagsStyle>
+      {
+        !edit ?
+          <TaskTagsStyle>
+            {tags.map((tag, i) => (
+              <Tag tag={tag} setTags={setTags} key={i} />
+            ))}
+            <TagForm task={task} setTags={setTags}/>
+          </TaskTagsStyle>
+        :
+          <TaskTagsEdition>
+            <p>editando</p><div className="loader"/>
+          </TaskTagsEdition>
+      }
 
     </TaskContainerStyle>
   );
 }
+
+
