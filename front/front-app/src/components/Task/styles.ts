@@ -35,6 +35,7 @@ export const TaskHeaderStyle = styled.div`
 export const TaskTitleStyle = styled.span`
   max-width: 70%;
   width: 70%;
+  word-wrap: break-word;
 `;
 
 export const TaskTimeSpanStyle = styled.span`
@@ -48,6 +49,7 @@ export const TaskDescriptionStyle = styled.div`
   font-weight: 500;
   color: #333333ce;
   padding: 16px 0px 16px 0px;
+  word-wrap: break-word;
 `;
 
 export const TaskTagsStyle = styled.div`
