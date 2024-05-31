@@ -1,8 +1,15 @@
 import styled, { keyframes } from "styled-components";
 
 const easeIn = keyframes`
-  from {opacity: 0;}
-  to {opacity: 1;}
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
 `;
 
 const easeOut = keyframes`
@@ -15,7 +22,7 @@ export const TaskContainerStyle = styled.div<{ $action?: boolean; }>`
   margin-bottom: 32px;
   padding: 18px;
   border-radius: 4px;
-  animation: ${ props => props.$action ? easeIn : easeOut } 0.2s linear normal;
+  animation: ${ props => props.$action ? easeIn : easeOut } 0.3s ease-in normal;
 `;
 
 export const TaskHeaderStyle = styled.div`
@@ -65,7 +72,7 @@ export const TaskActionsStyle = styled.div`
   .delete{
     border-radius: 4px;
     color: #e47676ff;
-    background: #e4b4b457;
+    background: #e4b4b469;
     padding: 8px;
   }
 
@@ -78,7 +85,7 @@ export const TaskActionsStyle = styled.div`
     border-radius: 4px;
     color: #45bb7ed3;
     padding: 8px;
-    background: #85ecb73d;
+    background: #78d6a63d;
 
   }
 
@@ -86,6 +93,23 @@ export const TaskActionsStyle = styled.div`
     background: #6dd49f52;
     transition: 0.2s;
   }
+
+  button {
+    border: none;
+  }
+
+  button:disabled {
+    background: #4d4d4d1f;
+    color: #333333;
+    cursor: default;
+    transition: 0.3s;
+  }
+
+  button:disabled:hover {
+    background: #4d4d4d1f;
+    cursor: default;
+  }
+
 `;
 
 export const ActionStyle = styled.div`

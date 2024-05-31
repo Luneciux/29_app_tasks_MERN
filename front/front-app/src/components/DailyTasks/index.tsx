@@ -20,7 +20,7 @@ export function DailyTasks({ tasks } :  DailyTasksTypes) {
   const showTasks = (tasks: TaskType[]) => (
     <TasksBoardStyle>
       {tasks.map((task, i) => (
-        <Task task={task} key={i} setEditedTask={setEditedTask}/>
+        <Task task={task} key={i} setEditedTask={setEditedTask} editedTask={editedTask} />
       ))}
     </TasksBoardStyle>
   );

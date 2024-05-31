@@ -14,19 +14,21 @@ import { Tag } from "../Tag";
 import { TagForm } from "../TagForm";
 import { TaskType } from "../../types/Task";
 import { DeleteTask } from "../../utils/Api";
-import { SetStateAction, useContext } from "react";
+import { SetStateAction, useContext, useEffect, useState } from "react";
 import { TasksContext } from "../../App";
 import { FormatTime } from "../../utils/Date";
 
 interface TaskComponentType {
   task: TaskType,
-  setEditedTask: React.Dispatch<SetStateAction<TaskType | undefined>>
+  setEditedTask: React.Dispatch<SetStateAction<TaskType | undefined>>,
+  editedTask: TaskType | undefined
 }
 
-export function Task( { task, setEditedTask } : TaskComponentType) {
+export function Task( { task, setEditedTask, editedTask } : TaskComponentType) {
 
   const { setTasks } = useContext(TasksContext);
   const { _id } = task;
+  const [ edit, setEdit ] = useState(false);
 
   const formatedDate = new Date(task.date);
   const timeSpan = new Date(task.timeSpanHours);
@@ -42,8 +44,14 @@ export function Task( { task, setEditedTask } : TaskComponentType) {
 
   async function handleEdit () {
     setEditedTask(task);
+    setEdit(true);
     return null;
   }
+
+  useEffect(() => {
+    if(editedTask === undefined)
+      setEdit(false);
+  }, [editedTask]);
 
   return (
     <TaskContainerStyle $action={true}>
@@ -57,14 +65,14 @@ export function Task( { task, setEditedTask } : TaskComponentType) {
 
         <TaskActionsStyle>
           <ActionStyle>
-            <p className="edit" onClick={ handleEdit }>
+            <button className="edit" onClick={ handleEdit } >
               Editar
-            </p>
+            </button>
           </ActionStyle>
           <ActionStyle>
-            <p className="delete" onClick={ handleDelete } >
+            <button className="delete" onClick={ handleDelete } disabled={edit}>
               Deletar
-            </p>
+            </button>
           </ActionStyle>
         </TaskActionsStyle>
 

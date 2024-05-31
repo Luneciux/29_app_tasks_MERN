@@ -69,7 +69,6 @@ export function TaskForm({ editedTask, setEditedTask } : TaskFormType) {
   }
 
   function clearForm () {
-    console.log("FINALIZAR");
     setStartHour("00:00");
     setFinishHour("00:00");
     setDescription("");
